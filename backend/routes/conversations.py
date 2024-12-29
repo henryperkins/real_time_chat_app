@@ -40,7 +40,7 @@ def handle_conversations():
             # Add participants
             for participant_id in participant_ids:
                 participant = ConversationParticipant(
-                    conversation_id=conversation.id,
+                    conversation=conversation,
                     user_id=participant_id
                 )
                 db.session.add(participant)
