@@ -1,5 +1,6 @@
 from azure_openai_config import azure_openai
 import logging
+from models import Project
 
 class AIAssistant:
     """Handles AI assistant interactions using Azure OpenAI."""
@@ -24,8 +25,13 @@ class AIAssistant:
         try:
             self.logger.info(f"Generating AI response for message: {message}")
             self.logger.info(f"Conversation history: {conversation_history}")
-            # Get deployment based on purpose
+            # Get deployment based on purpose and project's language model
             purpose = 'chat' if project_id else 'default'
+            if project_id:
+                project = Project.query.get(project_id)
+                model = project.language_model
+            else:
+                model = 'gpt-4'  # Default model if no project specified
             deployment = azure_openai.get_deployment(purpose)
 
             # Construct messages list

@@ -178,10 +178,10 @@ class WebSocketManager:
                             emit('error', {'message': 'Failed to save AI response'}, to=request.sid)
                     except Exception as e:
                         logger.error(f"Error generating AI response: {str(e)}", exc_info=True)
-                        emit('error', {'message': 'Failed to generate AI response'}, to=request.sid)
+                        emit('error', {'message': f'Failed to generate AI response: {str(e)}'}, to=request.sid)
                 
                 asyncio.create_task(generate_and_emit_ai_response())
             except Exception as e:
                 logger.error(f"Error in handle_send_message: {str(e)}", exc_info=True)
-                emit('error', {'message': 'Failed to process message'}, to=request.sid)
+                emit('error', {'message': f'Failed to process message: {str(e)}'}, to=request.sid)
                 return False

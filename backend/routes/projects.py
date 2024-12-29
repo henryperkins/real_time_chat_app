@@ -35,11 +35,11 @@ def handle_projects():
                 creator_id=user_id
             )
             db.session.add(conversation)
-            db.session.flush()  # Get conversation ID
+            db.session.flush()  # Flush to get the conversation ID
             
             # Add creator as participant
             participant = ConversationParticipant(
-                conversation=conversation,
+                conversation_id=conversation.id,  # Use the flushed ID
                 user_id=user_id
             )
             db.session.add(participant)

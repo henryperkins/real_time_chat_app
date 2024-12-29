@@ -92,6 +92,9 @@ class ConversationParticipant(db.Model):
         nullable=False
     )
     joined_at = db.Column(db.DateTime, default=datetime.utcnow)
+    __table_args__ = (
+        db.Index('idx_conversation_user', 'conversation_id', 'user_id'),
+    )
 
 
 class Message(db.Model):
