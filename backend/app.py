@@ -33,10 +33,14 @@ logger = logging.getLogger(__name__)
 async def create_azure_openai_config():
     """Create and initialize AzureOpenAIConfig asynchronously."""
     global azure_openai
-    # Ensure environment variables are loaded
-    load_dotenv(dotenv_path='../.env')
-    azure_openai = AzureOpenAIConfig()
-    await azure_openai.async_init()
+    try:
+        # Ensure environment variables are loaded
+        load_dotenv(dotenv_path='../.env')
+        azure_openai = AzureOpenAIConfig()
+        await azure_openai.async_init()
+    except Exception as e:
+        logger.error(f"Failed to initialize AzureOpenAIConfig: {str(e)}", exc_info=True)
+        azure_openai = None  # Ensure it is explicitly set to None
 
 def create_app(config_name='development'):
     """Create and configure the Flask application."""

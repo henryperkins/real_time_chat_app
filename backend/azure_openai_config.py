@@ -70,12 +70,17 @@ class AzureOpenAIConfig:
 
     async def fetch_models(self) -> List[Dict[str, Any]]:
         """Fetch all models available for the Azure OpenAI resource."""
-        try:
-            response = await self.client.models.list()
-            return response.data
-        except Exception as e:
-            logger.error(f"Error fetching models: {str(e)}")
-            return []
+        retries = 3
+        for attempt in range(retries):
+            try:
+                response = await self.client.models.list()
+                return response.data
+            except Exception as e:
+                logger.error(f"Error fetching models (attempt {attempt + 1}/{retries}): {str(e)}")
+                if attempt < retries - 1:
+                    await asyncio.sleep(2 ** attempt)  # Exponential backoff
+                else:
+                    raise
 
     async def _load_deployments(self) -> Dict[str, DeploymentConfig]:
         """Load deployment configurations from environment."""

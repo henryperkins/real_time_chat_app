@@ -7,6 +7,8 @@ class AIAssistant:
 
     def __init__(self):
         """Initialize the AI assistant with Azure OpenAI client."""
+        if azure_openai is None or azure_openai.client is None:
+            raise RuntimeError("AzureOpenAIConfig is not initialized. Please check the configuration.")
         self.client = azure_openai.client
         self.logger = logging.getLogger(__name__)
 
