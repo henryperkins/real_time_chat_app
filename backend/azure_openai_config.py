@@ -3,6 +3,7 @@ from typing import Optional, Dict, Any, List
 import os
 import json
 import logging
+import asyncio
 from openai import AsyncAzureOpenAI
 from dotenv import load_dotenv
 
