@@ -85,7 +85,7 @@ def create_app(config_name='development'):
 
     @app.route('/favicon.ico')
     def favicon():
-        return '', 204
+        return app.send_static_file('favicon.ico')
 
     @app.route('/<path:filename>')
     def serve_static(filename):
@@ -159,4 +159,4 @@ def create_socketio(app):
 if __name__ == '__main__':
     app = create_app(os.getenv('FLASK_ENV', 'development'))
     socketio = create_socketio(app)
-    socketio.run(app, host='0.0.0.0', port=5000, debug=False)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=False, use_reloader=False)

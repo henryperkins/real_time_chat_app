@@ -37,6 +37,7 @@ class WebSocketManager:
                     conversation_id=room,
                     user_id=user_id
                 ).first()
+                logger.info(f"Participant query result: {participant}")
                 
                 if not participant:
                     logger.warning(
