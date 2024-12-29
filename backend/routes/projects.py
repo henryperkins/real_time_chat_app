@@ -39,7 +39,7 @@ def handle_projects():
             
             # Add creator as participant
             participant = ConversationParticipant(
-                conversation_id=conversation.id,
+                conversation=conversation,
                 user_id=user_id
             )
             db.session.add(participant)

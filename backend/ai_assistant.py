@@ -23,6 +23,7 @@ class AIAssistant:
         """
         try:
             self.logger.info(f"Generating AI response for message: {message}")
+            self.logger.info(f"Conversation history: {conversation_history}")
             # Get deployment based on purpose
             purpose = 'chat' if project_id else 'default'
             deployment = azure_openai.get_deployment(purpose)
@@ -70,6 +71,7 @@ class AIAssistant:
                 )
 
             ai_response = response.choices[0].message.content.strip()
+            self.logger.info(f"Raw AI response: {response.choices[0].message.content}")
             self.logger.info(f"AI response generated: {ai_response}")
             return ai_response
 

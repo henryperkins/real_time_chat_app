@@ -40,6 +40,7 @@ class WebSocketManager:
                 
                 if not participant:
                     logger.warning(
+                        f"User {user_id} is not a participant in room {room}"
                         f"Unauthorized join: User {user_id} for room {room}"
                     )
                     emit('error', {'message': 'Failed to join conversation'}, to=request.sid)
@@ -49,6 +50,7 @@ class WebSocketManager:
                 logger.info(f"User {user_id} joined room {room}")
                 
                 # Get recent messages
+                logger.info(f"Fetching recent messages for room {room}")
                 messages = Message.query.filter_by(conversation_id=room)\
                     .order_by(Message.created_at.desc())\
                     .limit(50).all()
@@ -70,6 +72,7 @@ class WebSocketManager:
                     },
                     to=room
                 )
+                logger.info(f"Emitted recent_messages and status for room {room}")
             except Exception as e:
                 logger.error(f"Error in handle_join: {str(e)}", exc_info=True)
                 emit('error', {'message': 'Failed to join conversation'}, to=request.sid)

@@ -138,6 +138,7 @@ class AzureOpenAIConfig:
                     'max_completion_tokens': max_completion_tokens or max_tokens or deployment.max_tokens,
                     'temperature': 1.0  # o1-preview requires temperature=1
                 }
+                logger.info(f"Calling o1-preview with params: {params}")
                 response = await o1_client.chat.completions.create(**params)
             else:
                 # Standard parameters for other models
@@ -147,6 +148,7 @@ class AzureOpenAIConfig:
                     'max_tokens': max_tokens or deployment.max_tokens,
                     'temperature': temperature
                 }
+                logger.info(f"Calling model {deployment.model} with params: {params}")
                 response = await self.client.chat.completions.create(**params)
             
             # Get content from response
