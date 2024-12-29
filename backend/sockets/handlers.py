@@ -1,5 +1,6 @@
 """WebSocket event handlers."""
 import logging
+import asyncio
 from flask import session
 from flask_socketio import join_room, emit
 from models import db, Message, User, ConversationParticipant
@@ -25,7 +26,7 @@ class WebSocketManager:
         @socket_auth_required
         def handle_join(data):
             """Handle user joining a conversation room."""
-            logger.info(f"handle_send_message triggered with data: {data}")
+            logger.info(f"handle_join triggered with data: {data}")
             try:
                 room = data.get('conversation_id')
                 user_id = session['user_id']
@@ -38,8 +39,9 @@ class WebSocketManager:
                 
                 if not participant:
                     logger.warning(
-                    f"Unauthorized join: User {user_id} for room {room}"
+                        f"Unauthorized join: User {user_id} for room {room}"
                     )
+                    emit('error', {'message': 'Failed to join conversation'}, to=request.sid)
                     return False
                 
                 join_room(room)
@@ -69,12 +71,14 @@ class WebSocketManager:
                 )
             except Exception as e:
                 logger.error(f"Error in handle_join: {str(e)}", exc_info=True)
+                emit('error', {'message': 'Failed to join conversation'}, to=request.sid)
                 return False
 
         @self.socketio.on('send_message')
         @socket_auth_required
         def handle_send_message(data):
             """Handle sending a message in a conversation."""
+            logger.info(f"handle_send_message triggered with data: {data}")
             try:
                 room = data.get('conversation_id')
                 message_text = data.get('message')
@@ -89,18 +93,25 @@ class WebSocketManager:
                 
                 if not participant:
                     logger.warning(
-                    f"Unauthorized message: User {user_id} for room {room}"
+                        f"Unauthorized message: User {user_id} for room {room}"
                     )
+                    emit('error', {'message': 'Failed to send message'}, to=request.sid)
                     return False
                 
                 # Save message to database
+                logger.info(f"Attempting to save user message: {message_text}")
                 new_message = Message(
                     content=message_text,
                     conversation_id=room,
                     user_id=user_id
                 )
                 db.session.add(new_message)
-                db.session.commit()
+                try:
+                    db.session.commit()
+                except Exception as e:
+                    logger.error(f"Error saving user message: {str(e)}", exc_info=True)
+                    emit('error', {'message': 'Failed to send message'}, to=request.sid)
+                    return False
                 
                 # Get user information
                 user = User.query.get(user_id)
@@ -110,54 +121,63 @@ class WebSocketManager:
                     conversation_id=room
                 ).order_by(Message.created_at.desc()).limit(10).all()
                 
-                ai_response = self.ai_assistant.get_ai_response(
-                    message_text,
-                    [msg.content for msg in conversation_history],
-                    project_id
-                )
+                logger.info(f"Generating AI response for message: {message_text}")
+                async def generate_and_emit_ai_response():
+                    try:
+                        ai_response = self.ai_assistant.get_ai_response(
+                            message_text,
+                            [msg.content for msg in conversation_history],
+                            project_id
+                        )
+                        logger.info(f"AI response generated: {ai_response}")
+                        
+                        # Emit user message to room
+                        emit(
+                            "message",
+                            {
+                                "message": message_text,
+                                "user_id": user_id,
+                                "username": user.username,
+                                "project_id": project_id,
+                                "created_at": new_message.created_at.isoformat()
+                            },
+                            to=room
+                        )
+                        
+                        # Emit AI response to room
+                        emit(
+                            "message",
+                            {
+                                "message": ai_response,
+                                "user_id": None,
+                                "username": "AI Assistant",
+                                "project_id": project_id,
+                                "created_at": datetime.utcnow().isoformat()
+                            },
+                            to=room
+                        )
+                        logger.info(f"Emitted AI response to room {room}")
+                        
+                        # Save AI response
+                        logger.info(f"Attempting to save AI message: {ai_response}")
+                        ai_message = Message(
+                            content=ai_response,
+                            conversation_id=room,
+                            user_id=None,  # AI user
+                            ai_response=True
+                        )
+                        db.session.add(ai_message)
+                        try:
+                            db.session.commit()
+                        except Exception as e:
+                            logger.error(f"Error saving AI message: {str(e)}", exc_info=True)
+                            emit('error', {'message': 'Failed to save AI response'}, to=request.sid)
+                    except Exception as e:
+                        logger.error(f"Error generating AI response: {str(e)}", exc_info=True)
+                        emit('error', {'message': 'Failed to generate AI response'}, to=request.sid)
                 
-                # Log AI response
-                logger.info(f"AI response generated: {ai_response}")
-                logger.info(f"Emitting AI response to room {room} with data: {{'message': {ai_response}, 'user_id': None, 'username': 'AI Assistant', 'project_id': {project_id}}}")
-                
-                # Save AI response
-                ai_message = Message(
-                    content=ai_response,
-                    conversation_id=room,
-                    user_id=None,  # AI user
-                    ai_response=True
-                )
-                db.session.add(ai_message)
-                db.session.commit()
-                
-                # Emit user message to room
-                emit(
-                    "message",
-                    {
-                        "message": message_text,
-                        "user_id": user_id,
-                        "username": user.username,
-                        "project_id": project_id,
-                        "created_at": new_message.created_at.isoformat()
-                    },
-                    to=room
-                )
-                
-                # Log emitted data for AI response
-                logger.info(f"Emitting AI response: {ai_response} to room {room}")
-                
-                # Emit AI response to room
-                emit(
-                    "message",
-                    {
-                        "message": ai_response,
-                        "user_id": None,
-                        "username": "AI Assistant",
-                        "project_id": project_id,
-                        "created_at": ai_message.created_at.isoformat()
-                    },
-                    to=room
-                )
+                asyncio.create_task(generate_and_emit_ai_response())
             except Exception as e:
                 logger.error(f"Error in handle_send_message: {str(e)}", exc_info=True)
+                emit('error', {'message': 'Failed to process message'}, to=request.sid)
                 return False

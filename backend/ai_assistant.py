@@ -1,5 +1,5 @@
 from azure_openai_config import azure_openai
-
+import logging
 
 class AIAssistant:
     """Handles AI assistant interactions using Azure OpenAI."""
@@ -7,6 +7,7 @@ class AIAssistant:
     def __init__(self):
         """Initialize the AI assistant with Azure OpenAI client."""
         self.client = azure_openai.client
+        self.logger = logging.getLogger(__name__)
 
     def get_ai_response(self, message, conversation_history, project_id=None):
         """
@@ -21,6 +22,7 @@ class AIAssistant:
             str: The AI's response
         """
         try:
+            self.logger.info(f"Generating AI response for message: {message}")
             # Get deployment based on purpose
             purpose = 'chat' if project_id else 'default'
             deployment = azure_openai.get_deployment(purpose)
@@ -58,7 +60,7 @@ class AIAssistant:
                 response = self.client.chat.completions.create(
                     model=deployment.name,
                     messages=messages,
-                    max_completion_tokens=deployment.max_tokens
+                    max_tokens=deployment.max_tokens
                 )
             else:
                 response = self.client.chat.completions.create(
@@ -67,7 +69,10 @@ class AIAssistant:
                     max_tokens=deployment.max_tokens
                 )
 
-            return response.choices[0].message.content.strip()
+            ai_response = response.choices[0].message.content.strip()
+            self.logger.info(f"AI response generated: {ai_response}")
+            return ai_response
 
         except Exception as e:
+            self.logger.error(f"Error generating AI response: {str(e)}", exc_info=True)
             return f"Error: Unable to process the request. Details: {str(e)}"
