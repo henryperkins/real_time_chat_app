@@ -39,6 +39,14 @@
             align-items: center;
             gap: 1rem;
         }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+            }
+            .main-container {
+                flex-direction: column;
+            }
+        }
         .logout-btn {
             padding: 0.5rem 1rem;
             background: #dc3545;
