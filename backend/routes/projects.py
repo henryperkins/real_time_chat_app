@@ -36,6 +36,7 @@ def handle_projects():
             )
             db.session.add(conversation)
             db.session.commit()  # Commit to get the conversation ID
+            db.session.refresh(conversation)
             
             # Add creator as participant
             participant = ConversationParticipant(
