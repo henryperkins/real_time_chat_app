@@ -6,7 +6,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
 import asyncio
-from python_dotenv import load_dotenv
+from dotenv import load_dotenv
 
 from config import config
 from models import db
