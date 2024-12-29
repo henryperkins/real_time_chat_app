@@ -31,7 +31,7 @@ def create_app(config_name='development'):
     """Create and configure the Flask application."""
     # Set up paths
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    static_folder = os.path.join(base_dir, 'frontend')
+    static_folder = os.path.join(base_dir, 'frontend', 'public')
     uploads_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
     
     # Ensure directories exist

@@ -1,37 +1,6 @@
-# Real-Time Chat Application
+# Real-Time Chat App
 
-A modular Flask-based real-time chat application that supports project-based and independent conversations.
-
-## Project Structure
-
-```
-backend/
-├── routes/              # Route handlers
-│   ├── auth.py         # Authentication routes
-│   ├── projects.py     # Project management routes
-│   └── conversations.py # Conversation routes
-├── sockets/            # WebSocket handlers
-│   └── handlers.py     # WebSocket event handlers
-├── middleware/         # Middleware components
-│   └── auth.py        # Authentication middleware
-├── utils/             # Utility functions
-├── models.py          # Database models
-├── config.py          # Application configuration
-└── app.py            # Main application entry point
-
-frontend/
-├── index.html         # Main chat interface
-└── project_management.html # Project management interface
-```
-
-## Features
-
-- Real-time messaging using WebSocket
-- Project-based conversations with file management
-- Independent conversations
-- User authentication and session management
-- Secure WebSocket communication
-- File upload support for projects
+A real-time chat application with AI assistance powered by Azure OpenAI.
 
 ## Setup
 
@@ -41,91 +10,106 @@ cd backend
 pip install -r requirements.txt
 ```
 
-2. Set up environment variables in `backend/.env`:
-```
-SECRET_KEY=your_secret_key_here
-DEBUG_MODE=true
-DATABASE_URL=sqlite:///real_time_chat.db
-SOCKETIO_CORS_ORIGIN=*
-UPLOAD_FOLDER=uploads
-```
+2. Configure environment variables:
+- Copy `.env.template` to `.env`
+- Update with your Azure OpenAI configuration
+- Optional: Configure multiple deployments in `AZURE_OPENAI_DEPLOYMENTS`
 
-3. Initialize the database:
-```bash
-cd backend
-flask db init
-flask db migrate
-flask db upgrade
-```
-
-## Running the Application
-
-1. Start the backend server:
+3. Run the application:
 ```bash
 cd backend
 python app.py
 ```
 
-2. Open the frontend in a web browser:
-- Navigate to `frontend/index.html` for the chat interface
-- Navigate to `frontend/project_management.html` for project management
+## Azure OpenAI Integration
 
-## API Endpoints
+The application uses Azure OpenAI for AI-assisted chat features:
 
-### Authentication
-- `POST /auth/register` - Register a new user
-- `POST /auth/login` - Login user
-- `POST /auth/logout` - Logout user
-- `GET /auth/check` - Check authentication status
+- Supports multiple model deployments for different purposes
+- Handles both standard GPT models and o1-series reasoning models
+- Provides token usage tracking and content filtering
+- Supports advanced features like reasoning effort control
 
-### Projects
-- `GET /projects` - List all accessible projects
-- `POST /projects` - Create a new project
-- `GET /projects/<id>/files` - List project files
-- `POST /projects/<id>/files` - Upload file to project
+### Configuration
 
-### Conversations
-- `GET /conversations` - List user's conversations
-- `POST /conversations` - Create a new conversation
-- `GET /conversations/<id>/messages` - Get conversation messages
-- `POST /conversations/<id>/messages` - Send a message
-- `GET /conversations/users` - Search users for adding to conversations
+Configure Azure OpenAI in your `.env` file:
 
-## WebSocket Events
+```env
+AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
+AZURE_OPENAI_KEY=your-api-key
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
+```
 
-### Client -> Server
-- `join` - Join a conversation room
-- `send_message` - Send a message to a conversation
+For multiple deployments, configure the `AZURE_OPENAI_DEPLOYMENTS` variable:
 
-### Server -> Client
-- `message` - New message in conversation
-- `status` - Room status updates
-- `recent_messages` - Recent messages when joining a room
+```json
+[
+  {
+    "name": "gpt4-deployment",
+    "model": "gpt-4",
+    "purpose": "default",
+    "max_tokens": 4000
+  },
+  {
+    "name": "o1-deployment", 
+    "model": "o1",
+    "purpose": "chat",
+    "max_tokens": 2000
+  }
+]
+```
 
-## Security Features
+### Features
 
-- Session-based authentication
-- WebSocket authentication middleware
-- CORS protection
-- File upload security
-- SQL injection protection through SQLAlchemy
-- Password hashing with Werkzeug
+1. **Multiple Model Support**
+   - Configure different models for different purposes
+   - Automatic handling of model-specific requirements
+   - Support for both standard and o1-series models
 
-## Error Handling
+2. **O1 Series Integration**
+   - Automatic conversion of system messages to developer messages
+   - Support for reasoning effort control (low/medium/high)
+   - Proper handling of max_completion_tokens parameter
 
-The application includes comprehensive error handling:
-- Input validation
-- Authentication checks
-- File upload validation
-- Database error handling
-- WebSocket error handling
-- Logging for debugging
+3. **Enhanced Response Data**
+   - Token usage tracking including cached and reasoning tokens
+   - Content filtering results
+   - Model information and completion status
 
-## Development
+4. **Error Handling**
+   - Comprehensive error logging
+   - Graceful error recovery
+   - Detailed error messages for debugging
 
-The application follows a modular structure for maintainability:
-- Route handlers are organized into blueprints
-- WebSocket events are managed through a dedicated manager
-- Authentication is handled through middleware
-- Database models are clearly defined
-- Configuration is environment-based
+### Usage Example
+
+```python
+from ai_assistant import AIAssistant
+
+# Initialize assistant
+assistant = AIAssistant()
+
+# Get AI response with reasoning control
+response = await assistant.get_ai_response(
+    message="What are the key principles of software design?",
+    conversation_history=[],
+    reasoning_effort="high"  # Optional: Control reasoning depth
+)
+
+# Access response data
+print(f"AI Response: {response['content']}")
+print(f"Token Usage: {response['usage']}")
+print(f"Model Used: {response['model']}")
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
