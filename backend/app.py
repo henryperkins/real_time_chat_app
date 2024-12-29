@@ -1,4 +1,5 @@
 from sqlalchemy.exc import OperationalError
+import os
 import logging
 from datetime import timedelta
 from flask import Flask, jsonify
@@ -11,6 +12,9 @@ from routes.auth import auth_bp
 from routes.projects import projects_bp
 from routes.conversations import conversations_bp
 from sockets.handlers import WebSocketManager
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
+os.makedirs(log_dir, exist_ok=True)
+log_file = os.path.join(log_dir, 'app.log')
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)d %(message)s',
