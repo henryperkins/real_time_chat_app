@@ -6,12 +6,16 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
 import asyncio
+from python_dotenv import load_dotenv
 
 from config import config
 from models import db
 from routes import register_blueprints
 from sockets.handlers import WebSocketManager
 from azure_openai_config import AzureOpenAIConfig
+
+# Load environment variables from .env file
+load_dotenv(dotenv_path='../.env')
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
 os.makedirs(log_dir, exist_ok=True)
@@ -29,6 +33,8 @@ logger = logging.getLogger(__name__)
 async def create_azure_openai_config():
     """Create and initialize AzureOpenAIConfig asynchronously."""
     global azure_openai
+    # Ensure environment variables are loaded
+    load_dotenv(dotenv_path='../.env')
     azure_openai = AzureOpenAIConfig()
     await azure_openai.async_init()
 
