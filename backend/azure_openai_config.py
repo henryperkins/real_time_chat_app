@@ -36,7 +36,7 @@ class DeploymentConfig:
 class AzureOpenAIConfig:
     """Azure OpenAI configuration and client management."""
 
-    async def __init__(self):
+    def __init__(self):
         """Initialize Azure OpenAI configuration."""
         self.azure_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
         self.api_key = os.getenv('AZURE_OPENAI_API_KEY')
@@ -58,7 +58,10 @@ class AzureOpenAIConfig:
             api_version=self.api_version
         )
 
-        # Load deployment configurations
+        self.deployments = {}
+
+    async def async_init(self):
+        """Asynchronously initialize Azure OpenAI configuration."""
         self.deployments = await self._load_deployments()
         if len(self.deployments) <= 1:
             logger.warning(f"Only {len(self.deployments)} deployment(s) loaded. Expected more.")

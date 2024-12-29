@@ -29,7 +29,8 @@ logger = logging.getLogger(__name__)
 async def create_azure_openai_config():
     """Create and initialize AzureOpenAIConfig asynchronously."""
     global azure_openai
-    azure_openai = await AzureOpenAIConfig()
+    azure_openai = AzureOpenAIConfig()
+    await azure_openai.async_init()
 
 def create_app(config_name='development'):
     """Create and configure the Flask application."""
