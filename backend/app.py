@@ -102,17 +102,29 @@ def create_app(config_name='development'):
     @app.errorhandler(404)
     def not_found_error(error):
         logger.error(f"404 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "Resource not found", "details": str(error)}), 404
+        return jsonify({
+            "error": "Resource not found",
+            "details": str(error),
+            "status_code": 404
+        }), 404
 
     @app.errorhandler(500)
     def internal_error(error):
         logger.error(f"500 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An internal error occurred", "details": str(error)}), 500
+        return jsonify({
+            "error": "An internal server error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
 
     @app.errorhandler(Exception)
     def handle_error(error):
-        logger.error(f"Unhandled error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An unexpected error occurred", "details": str(error)}), 500
+        logger.error(f"Unhandled exception: {str(error)}", exc_info=True)
+        return jsonify({
+            "error": "An unexpected error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
     
     # Create database tables
     with app.app_context():
