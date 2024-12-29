@@ -1,0 +1,18 @@
+name: "My CodeQL Config"
+
+# Exclude certain paths to avoid noise or unnecessary scans
+exclude:
+  paths:
+    - "node_modules"  # React/JavaScript dependencies
+    - "build"         # React production build output
+    - "dist"          # Transpiled JavaScript/TypeScript files
+    - "venv"          # Python virtual environment
+    - ".venv"         # Alternate naming for Python virtual environments
+    - "coverage"      # Test coverage reports
+    - "logs"          # Log files or directories
+
+# Add custom queries or override query packs (optional)
+# Uncomment to add or extend queries
+# querypacks:
+#   - name: codeql/python-queries
+#   - name: codeql/javascript-queries
