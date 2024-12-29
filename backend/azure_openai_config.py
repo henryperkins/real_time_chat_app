@@ -60,7 +60,10 @@ class AzureOpenAIConfig:
 
         # Load deployment configurations
         self.deployments = self._load_deployments()
-        logger.info(f"Loaded {len(self.deployments)} deployments")
+        if len(self.deployments) <= 1:
+            logger.warning(f"Only {len(self.deployments)} deployment(s) loaded. Expected more.")
+        else:
+            logger.info(f"Loaded {len(self.deployments)} deployments")
 
     def _load_deployments(self) -> Dict[str, DeploymentConfig]:
         """Load deployment configurations from environment."""
@@ -78,8 +81,12 @@ class AzureOpenAIConfig:
                         max_tokens=deploy.get('max_tokens')
                     )
                     deployments[deploy['purpose']] = config
+            except json.JSONDecodeError as e:
+                logger.error(f"Error parsing JSON for deployments: {str(e)}")
+            except KeyError as e:
+                logger.error(f"Missing key in deployment configuration: {str(e)}")
             except Exception as e:
-                logger.error(f"Error loading deployments: {str(e)}")
+                logger.error(f"Unexpected error loading deployments: {str(e)}")
         
         # Add default deployment if none specified
         if not deployments:
