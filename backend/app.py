@@ -126,7 +126,7 @@ def create_app(config_name='development'):
             "status_code": 500
         }), 500
     
-    @app.errorhandler(db.OperationalError)
+    @app.errorhandler(OperationalError)
     def handle_db_error(error):
         logger.error(f"Database error: {str(error)}", exc_info=True)
         return jsonify({
