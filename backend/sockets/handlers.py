@@ -73,6 +73,7 @@ class WebSocketManager:
                     },
                     to=room
                 )
+                logger.info(f"User {user_id} successfully joined room {room}")
                 logger.info(f"Emitted recent_messages and status for room {room}")
             except Exception as e:
                 logger.error(f"Error in handle_join: {str(e)}", exc_info=True)
