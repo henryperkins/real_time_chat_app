@@ -1,3 +1,19 @@
 /.env
 .aider*
 .env
+
+# Node
+node_modules/
+build/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# IDE/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
