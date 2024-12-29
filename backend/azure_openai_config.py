@@ -53,6 +53,7 @@ class AzureOpenAIConfig:
                 "environment variables."
             )
 
+        logger.info(f"Initializing Azure OpenAI client with endpoint: {self.azure_endpoint}")
         self.client = AsyncAzureOpenAI(
             azure_endpoint=self.azure_endpoint,
             api_key=self.api_key,
@@ -79,8 +80,10 @@ class AzureOpenAIConfig:
             except Exception as e:
                 logger.error(f"Error fetching models (attempt {attempt + 1}/{retries}): {str(e)}")
                 if attempt < retries - 1:
+                    logger.warning(f"Retrying connection in {2 ** attempt} seconds...")
                     await asyncio.sleep(2 ** attempt)  # Exponential backoff
                 else:
+                    logger.error("All retries failed. Unable to fetch models.")
                     raise
 
     async def _load_deployments(self) -> Dict[str, DeploymentConfig]:
@@ -118,6 +121,7 @@ class AzureOpenAIConfig:
                     break
             
             if default_model:
+                logger.warning("No deployments specified. Falling back to default configuration.")
                 deployments['default'] = DeploymentConfig(
                     name=default_model,
                     model=default_model,

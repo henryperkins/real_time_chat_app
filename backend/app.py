@@ -39,7 +39,11 @@ async def create_azure_openai_config():
         azure_openai = AzureOpenAIConfig()
         await azure_openai.async_init()
     except Exception as e:
-        logger.error(f"Failed to initialize AzureOpenAIConfig: {str(e)}", exc_info=True)
+        logger.error(
+            f"Failed to initialize AzureOpenAIConfig: {str(e)}. "
+            f"Check AZURE_OPENAI_ENDPOINT and network connectivity.",
+            exc_info=True
+        )
         azure_openai = None  # Ensure it is explicitly set to None
 
 def create_app(config_name='development'):

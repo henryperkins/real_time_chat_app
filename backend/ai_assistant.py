@@ -8,7 +8,11 @@ class AIAssistant:
     def __init__(self):
         """Initialize the AI assistant with Azure OpenAI client."""
         if azure_openai is None or azure_openai.client is None:
-            raise RuntimeError("AzureOpenAIConfig is not initialized. Please check the configuration.")
+            raise RuntimeError(
+                "AzureOpenAIConfig is not initialized. Please check the configuration, "
+                "network connectivity, and environment variables. Ensure that the "
+                "AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY are correctly set in the .env file."
+            )
         self.client = azure_openai.client
         self.logger = logging.getLogger(__name__)
 
@@ -24,6 +28,10 @@ class AIAssistant:
         Returns:
             str: The AI's response
         """
+        if azure_openai is None or azure_openai.client is None:
+            self.logger.error("AzureOpenAIConfig is not initialized. Cannot generate AI response.")
+            return "Error: AI assistant is currently unavailable. Please try again later."
+
         try:
             self.logger.info(f"Generating AI response for message: {message}")
             self.logger.info(f"Conversation history: {conversation_history}")
