@@ -1,8 +1,11 @@
+# Environment variables
 /.env
-.aider*
 .env
 
-# Node
+# Aider specific
+.aider*
+
+# Node.js
 node_modules/
 build/
 dist/
@@ -17,3 +20,33 @@ venv/
 Thumbs.db
 .idea/
 .vscode/
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+*.cover
+*.coverage
+*.lcov
+
+# Dependency directories
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+
+# Testing
+.tox/
+.nox/
+.pytest_cache/
+
+# Miscellaneous
+*.swp
+*~
+backend/__pycache__
+.venv
+backend/middleware/__pycache__
+backend/migrations/__pycache__
+backend/routes/__pycache__
+backend/sockets/__pycache__
+backend/venv
