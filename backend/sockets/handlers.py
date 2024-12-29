@@ -1,7 +1,8 @@
 """WebSocket event handlers."""
 import logging
 import asyncio
-from flask import session
+from datetime import datetime
+from flask import session, request
 from flask_socketio import join_room, emit
 from models import db, Message, User, ConversationParticipant
 from middleware.auth import socket_auth_required
