@@ -91,7 +91,9 @@ def create_app(config_name='development'):
     def serve_static(filename):
         try:
             logger.info(f"Serving static file: {filename}")
-            return app.send_static_file(filename)
+            response = app.send_static_file(filename)
+            response.headers['Cache-Control'] = 'public, max-age=300'  # 5 minutes
+            return response
         except Exception as e:
             logger.error(f"Failed to serve {filename}: {str(e)}", exc_info=True)
             return '', 404
