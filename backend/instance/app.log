@@ -1,0 +1,957 @@
+2024-12-28 22:48:29,621 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:48:29,622 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:48:29,649 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:48:29,650 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:48:29,650 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,651 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:48:29,651 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,652 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:48:29,652 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,653 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:48:29,654 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,654 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:48:29,655 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,655 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:48:29,656 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,656 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:48:29,695 INFO engineio.server Server initialized for threading.
+2024-12-28 22:48:29,697 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:48:29,704 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:48:29,842 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:48:29,843 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:48:29,873 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:48:29,874 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:48:29,874 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,876 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:48:29,876 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,877 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:48:29,877 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,878 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:48:29,878 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,879 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:48:29,879 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,880 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:48:29,881 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:29,881 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:48:29,925 INFO engineio.server Server initialized for threading.
+2024-12-28 22:48:29,929 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:48:29,937 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:48:30,319 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:48:30,319 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:48:30,354 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:48:30,355 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:48:30,355 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,356 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:48:30,357 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,358 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:48:30,358 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,359 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:48:30,359 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,360 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:48:30,361 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,362 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:48:30,362 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:48:30,363 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:48:30,429 INFO engineio.server Server initialized for threading.
+2024-12-28 22:48:30,433 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:48:30,446 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:49:18,744 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\app.py', reloading
+2024-12-28 22:49:19,015 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\app.py', reloading
+2024-12-28 22:49:19,516 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\app.py', reloading
+2024-12-28 22:49:20,790 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:49:20,791 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:49:21,173 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:49:21,173 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:49:21,913 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:49:21,914 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:50:11,080 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:50:11,080 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:50:11,100 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:50:11,100 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:50:11,100 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,101 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:50:11,102 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,102 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:50:11,102 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,103 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:50:11,103 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,103 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:50:11,104 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,104 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:50:11,104 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,105 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:50:11,113 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:50:11,114 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:50:11,114 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,115 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:50:11,115 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,116 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:50:11,117 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,118 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:50:11,118 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,119 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:50:11,119 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,120 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:50:11,121 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:11,122 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:50:11,161 INFO engineio.server Server initialized for threading.
+2024-12-28 22:50:11,172 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-28 22:50:11,173 INFO werkzeug [33mPress CTRL+C to quit[0m
+2024-12-28 22:50:11,173 INFO werkzeug  * Restarting with stat
+2024-12-28 22:50:13,135 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:50:13,135 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:50:13,151 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:50:13,152 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:50:13,152 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,153 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:50:13,154 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,154 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:50:13,155 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,155 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:50:13,156 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,156 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:50:13,157 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,157 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:50:13,158 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,159 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:50:13,166 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:50:13,166 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:50:13,167 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,167 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:50:13,168 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,168 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:50:13,169 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,170 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:50:13,170 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,171 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:50:13,171 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,172 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:50:13,172 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:50:13,173 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:50:13,218 INFO engineio.server Server initialized for threading.
+2024-12-28 22:50:13,221 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:50:13,230 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:51:09,950 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:09] "[36mGET /project_management.html HTTP/1.1[0m" 304 -
+2024-12-28 22:51:10,020 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:10,023 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:51:10,024 INFO sqlalchemy.engine.Engine [generated in 0.00064s] (2,)
+2024-12-28 22:51:10,025 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:10,026 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:10] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:51:10,112 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:10] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:10,363 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:10] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:10,679 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:10,682 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:51:10,683 INFO sqlalchemy.engine.Engine [generated in 0.00071s] (2, 2)
+2024-12-28 22:51:10,684 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:10,684 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:10] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:51:11,214 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:11] "[36mGET /project_management.html HTTP/1.1[0m" 304 -
+2024-12-28 22:51:11,518 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:11,519 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:51:11,519 INFO sqlalchemy.engine.Engine [cached since 1.496s ago] (2,)
+2024-12-28 22:51:11,520 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:11,521 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:11] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:51:11,582 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:11] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:11,837 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:11] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:12,151 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:12,151 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:51:12,152 INFO sqlalchemy.engine.Engine [cached since 1.47s ago] (2, 2)
+2024-12-28 22:51:12,153 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:12,153 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:12] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:51:21,470 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:21] "[36mGET /project_management.html HTTP/1.1[0m" 304 -
+2024-12-28 22:51:21,780 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:21,781 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:51:21,781 INFO sqlalchemy.engine.Engine [cached since 11.76s ago] (2,)
+2024-12-28 22:51:21,782 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:21,783 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:21] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:51:21,843 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:21] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:22,098 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:22] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:22,414 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:22,414 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:51:22,415 INFO sqlalchemy.engine.Engine [cached since 11.73s ago] (2, 2)
+2024-12-28 22:51:22,416 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:22,416 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:22] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:51:26,659 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:26] "POST /auth/logout HTTP/1.1" 200 -
+2024-12-28 22:51:26,988 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:26] "GET /login.html HTTP/1.1" 200 -
+2024-12-28 22:51:27,022 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:27] "[31m[1mGET /auth/check HTTP/1.1[0m" 401 -
+2024-12-28 22:51:27,257 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:27] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:27,557 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:27] "[32mPOST /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:32,348 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:32,349 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:51:32,350 INFO sqlalchemy.engine.Engine [generated in 0.00071s] ('hperkins', 1, 0)
+2024-12-28 22:51:32,787 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:32,788 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:32] "POST /auth/login HTTP/1.1" 200 -
+2024-12-28 22:51:32,809 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:32] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2024-12-28 22:51:33,123 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:33,124 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:51:33,125 INFO sqlalchemy.engine.Engine [cached since 23.1s ago] (2,)
+2024-12-28 22:51:33,126 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:33,127 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:51:33,235 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:33,440 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "[32mGET /conversations HTTP/1.1[0m" 308 -
+2024-12-28 22:51:33,439 INFO engineio.server Dvl7mFvtcwwnBlOHAAAA: Sending packet OPEN data {'sid': 'Dvl7mFvtcwwnBlOHAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000}
+2024-12-28 22:51:33,441 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "GET /socket.io/?EIO=4&transport=polling&t=PGGmLIB HTTP/1.1" 200 -
+2024-12-28 22:51:33,755 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:33,756 INFO engineio.server Dvl7mFvtcwwnBlOHAAAA: Received packet MESSAGE data 0
+2024-12-28 22:51:33,758 INFO sqlalchemy.engine.Engine SELECT conversation.id AS conversation_id, conversation.created_at AS conversation_created_at, conversation.project_id AS conversation_project_id, conversation.creator_id AS conversation_creator_id 
+FROM conversation JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE conversation_participant.user_id = ?
+2024-12-28 22:51:33,756 INFO engineio.server Dvl7mFvtcwwnBlOHAAAA: Received request to upgrade to websocket
+2024-12-28 22:51:33,759 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "GET /socket.io/?EIO=4&transport=polling&t=PGGmLN3.0&sid=Dvl7mFvtcwwnBlOHAAAA HTTP/1.1" 200 -
+2024-12-28 22:51:33,759 INFO engineio.server Dvl7mFvtcwwnBlOHAAAA: Sending packet MESSAGE data 0{"sid":"OsHDev1UcJW8LRVgAAAB"}
+2024-12-28 22:51:33,759 INFO sqlalchemy.engine.Engine [generated in 0.00181s] (2,)
+2024-12-28 22:51:33,765 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "POST /socket.io/?EIO=4&transport=polling&t=PGGmLN3&sid=Dvl7mFvtcwwnBlOHAAAA HTTP/1.1" 200 -
+2024-12-28 22:51:33,766 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:33,768 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:33] "GET /conversations/ HTTP/1.1" 200 -
+2024-12-28 22:51:34,008 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:34] "GET /socket.io/?EIO=4&transport=polling&t=PGGmLS6&sid=Dvl7mFvtcwwnBlOHAAAA HTTP/1.1" 200 -
+2024-12-28 22:51:34,011 INFO engineio.server Dvl7mFvtcwwnBlOHAAAA: Upgrade to websocket successful
+2024-12-28 22:51:34,420 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:34] "GET /socket.io/?EIO=4&transport=websocket&sid=Dvl7mFvtcwwnBlOHAAAA HTTP/1.1" 200 -
+2024-12-28 22:51:34,441 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:34] "[36mGET /project_management.html HTTP/1.1[0m" 304 -
+2024-12-28 22:51:34,751 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:34,751 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:51:34,752 INFO sqlalchemy.engine.Engine [cached since 24.73s ago] (2,)
+2024-12-28 22:51:34,753 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:34,754 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:34] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:51:34,830 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:34] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:51:35,064 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:35] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:35,380 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:35,380 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:51:35,381 INFO sqlalchemy.engine.Engine [cached since 24.7s ago] (2, 2)
+2024-12-28 22:51:35,382 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:35,383 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:35] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:51:38,682 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:38] "[32mPOST /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:38,998 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:38,999 INFO sqlalchemy.engine.Engine INSERT INTO project (name, language_model, created_at, creator_id) VALUES (?, ?, ?, ?)
+2024-12-28 22:51:39,000 INFO sqlalchemy.engine.Engine [generated in 0.00057s] ('Test', 'o1-preview', '2024-12-29 04:51:38.999860', 2)
+2024-12-28 22:51:39,002 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:51:39,006 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:39,008 INFO sqlalchemy.engine.Engine SELECT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project 
+WHERE project.id = ?
+2024-12-28 22:51:39,009 INFO sqlalchemy.engine.Engine [generated in 0.00076s] (5,)
+2024-12-28 22:51:39,011 INFO sqlalchemy.engine.Engine INSERT INTO conversation (created_at, project_id, creator_id) VALUES (?, ?, ?)
+2024-12-28 22:51:39,011 INFO sqlalchemy.engine.Engine [generated in 0.00060s] ('2024-12-29 04:51:39.011001', 5, 2)
+2024-12-28 22:51:39,014 INFO sqlalchemy.engine.Engine INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)
+2024-12-28 22:51:39,014 INFO sqlalchemy.engine.Engine [generated in 0.00077s] (None, 2, '2024-12-29 04:51:39.014107')
+2024-12-28 22:51:39,015 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:39,016 ERROR routes.projects Error in handle_projects: (sqlite3.IntegrityError) NOT NULL constraint failed: conversation_participant.conversation_id
+[SQL: INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)]
+[parameters: (None, 2, '2024-12-29 04:51:39.014107')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: conversation_participant.conversation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\routes\projects.py", line 45, in handle_projects
+    db.session.commit()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 2028, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4352, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4487, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4448, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: conversation_participant.conversation_id
+[SQL: INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)]
+[parameters: (None, 2, '2024-12-29 04:51:39.014107')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-12-28 22:51:39,029 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:39] "[35m[1mPOST /projects/ HTTP/1.1[0m" 500 -
+2024-12-28 22:51:42,514 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:42] "[32mPOST /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:51:42,819 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:42,820 INFO sqlalchemy.engine.Engine INSERT INTO project (name, language_model, created_at, creator_id) VALUES (?, ?, ?, ?)
+2024-12-28 22:51:42,821 INFO sqlalchemy.engine.Engine [cached since 3.821s ago] ('Test', 'gpt-4o', '2024-12-29 04:51:42.820536', 2)
+2024-12-28 22:51:42,822 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:51:42,826 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:51:42,827 INFO sqlalchemy.engine.Engine SELECT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project 
+WHERE project.id = ?
+2024-12-28 22:51:42,828 INFO sqlalchemy.engine.Engine [cached since 3.82s ago] (6,)
+2024-12-28 22:51:42,829 INFO sqlalchemy.engine.Engine INSERT INTO conversation (created_at, project_id, creator_id) VALUES (?, ?, ?)
+2024-12-28 22:51:42,830 INFO sqlalchemy.engine.Engine [cached since 3.819s ago] ('2024-12-29 04:51:42.829770', 6, 2)
+2024-12-28 22:51:42,832 INFO sqlalchemy.engine.Engine INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)
+2024-12-28 22:51:42,832 INFO sqlalchemy.engine.Engine [cached since 3.819s ago] (None, 2, '2024-12-29 04:51:42.832049')
+2024-12-28 22:51:42,833 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:51:42,834 ERROR routes.projects Error in handle_projects: (sqlite3.IntegrityError) NOT NULL constraint failed: conversation_participant.conversation_id
+[SQL: INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)]
+[parameters: (None, 2, '2024-12-29 04:51:42.832049')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: conversation_participant.conversation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\routes\projects.py", line 45, in handle_projects
+    db.session.commit()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 2028, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4352, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4487, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\session.py", line 4448, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\htper\AppData\Roaming\Python\Python313\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: conversation_participant.conversation_id
+[SQL: INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)]
+[parameters: (None, 2, '2024-12-29 04:51:42.832049')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-12-28 22:51:42,841 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:42] "[35m[1mPOST /projects/ HTTP/1.1[0m" 500 -
+2024-12-28 22:51:48,407 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:51:48] "[32mPOST /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:52:06,047 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\routes\\projects.py', reloading
+2024-12-28 22:52:06,215 INFO werkzeug  * Restarting with stat
+2024-12-28 22:52:07,808 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:52:07,809 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:52:07,826 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:07,827 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:52:07,828 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,829 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:52:07,829 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,830 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:52:07,830 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,831 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:52:07,831 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,832 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:52:07,832 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,833 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:52:07,833 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,834 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:07,838 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:07,839 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:52:07,839 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,840 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:52:07,840 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,841 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:52:07,842 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,842 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:52:07,842 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,843 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:52:07,843 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,844 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:52:07,844 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:52:07,845 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:07,878 INFO engineio.server Server initialized for threading.
+2024-12-28 22:52:07,880 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:52:07,887 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:52:24,827 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:24] "[36mGET /project_management.html HTTP/1.1[0m" 304 -
+2024-12-28 22:52:24,897 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:24,900 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:52:24,901 INFO sqlalchemy.engine.Engine [generated in 0.00082s] (2,)
+2024-12-28 22:52:24,904 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:24,904 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:24] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:52:25,008 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:25] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:52:25,233 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:25] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:52:25,551 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:25,555 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:52:25,556 INFO sqlalchemy.engine.Engine [generated in 0.00080s] (2, 2)
+2024-12-28 22:52:25,558 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:25,558 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:25] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:52:28,461 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:28] "[32mPOST /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:52:28,780 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:28,781 INFO sqlalchemy.engine.Engine INSERT INTO project (name, language_model, created_at, creator_id) VALUES (?, ?, ?, ?)
+2024-12-28 22:52:28,782 INFO sqlalchemy.engine.Engine [generated in 0.00064s] ('Test', 'gpt-4o', '2024-12-29 04:52:28.781774', 2)
+2024-12-28 22:52:28,784 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:28,787 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:28,789 INFO sqlalchemy.engine.Engine SELECT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project 
+WHERE project.id = ?
+2024-12-28 22:52:28,789 INFO sqlalchemy.engine.Engine [generated in 0.00061s] (7,)
+2024-12-28 22:52:28,791 INFO sqlalchemy.engine.Engine INSERT INTO conversation (created_at, project_id, creator_id) VALUES (?, ?, ?)
+2024-12-28 22:52:28,791 INFO sqlalchemy.engine.Engine [generated in 0.00049s] ('2024-12-29 04:52:28.791162', 7, 2)
+2024-12-28 22:52:28,793 INFO sqlalchemy.engine.Engine INSERT INTO conversation_participant (conversation_id, user_id, joined_at) VALUES (?, ?, ?)
+2024-12-28 22:52:28,795 INFO sqlalchemy.engine.Engine [generated in 0.00124s] (2, 2, '2024-12-29 04:52:28.793775')
+2024-12-28 22:52:28,796 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:28,800 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:28,801 INFO sqlalchemy.engine.Engine SELECT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project 
+WHERE project.id = ?
+2024-12-28 22:52:28,802 INFO sqlalchemy.engine.Engine [cached since 0.01321s ago] (7,)
+2024-12-28 22:52:28,803 INFO sqlalchemy.engine.Engine SELECT conversation.id AS conversation_id, conversation.created_at AS conversation_created_at, conversation.project_id AS conversation_project_id, conversation.creator_id AS conversation_creator_id 
+FROM conversation 
+WHERE conversation.id = ?
+2024-12-28 22:52:28,804 INFO sqlalchemy.engine.Engine [generated in 0.00067s] (2,)
+2024-12-28 22:52:28,805 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:28,806 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:28] "[35m[1mPOST /projects/ HTTP/1.1[0m" 201 -
+2024-12-28 22:52:29,017 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:29] "[32mGET /projects HTTP/1.1[0m" 308 -
+2024-12-28 22:52:29,112 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:29,113 INFO sqlalchemy.engine.Engine SELECT DISTINCT project.id AS project_id, project.name AS project_name, project.language_model AS project_language_model, project.created_at AS project_created_at, project.creator_id AS project_creator_id 
+FROM project JOIN conversation ON project.id = conversation.project_id JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE project.creator_id = ? OR conversation_participant.user_id = ?
+2024-12-28 22:52:29,113 INFO sqlalchemy.engine.Engine [cached since 3.558s ago] (2, 2)
+2024-12-28 22:52:29,114 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:29,114 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:29] "GET /projects/ HTTP/1.1" 200 -
+2024-12-28 22:52:32,023 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "GET /index.html?project=7 HTTP/1.1" 200 -
+2024-12-28 22:52:32,324 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:32,325 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:52:32,325 INFO sqlalchemy.engine.Engine [cached since 7.425s ago] (2,)
+2024-12-28 22:52:32,327 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:32,327 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "GET /auth/check HTTP/1.1" 200 -
+2024-12-28 22:52:32,434 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2024-12-28 22:52:32,640 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "[32mGET /conversations HTTP/1.1[0m" 308 -
+2024-12-28 22:52:32,641 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet OPEN data {'sid': '0uN-qWcLwkxR6zt4AAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000}
+2024-12-28 22:52:32,642 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "GET /socket.io/?EIO=4&transport=polling&t=PGGmZlA HTTP/1.1" 200 -
+2024-12-28 22:52:32,958 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:32,958 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received request to upgrade to websocket
+2024-12-28 22:52:32,960 INFO sqlalchemy.engine.Engine SELECT conversation.id AS conversation_id, conversation.created_at AS conversation_created_at, conversation.project_id AS conversation_project_id, conversation.creator_id AS conversation_creator_id 
+FROM conversation JOIN conversation_participant ON conversation.id = conversation_participant.conversation_id 
+WHERE conversation_participant.user_id = ?
+2024-12-28 22:52:32,959 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 0
+2024-12-28 22:52:32,962 INFO sqlalchemy.engine.Engine [generated in 0.00154s] (2,)
+2024-12-28 22:52:32,966 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 0{"sid":"XZsDLtkbLhz8Bx-zAAAB"}
+2024-12-28 22:52:32,967 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "GET /socket.io/?EIO=4&transport=polling&t=PGGmZq5&sid=0uN-qWcLwkxR6zt4AAAA HTTP/1.1" 200 -
+2024-12-28 22:52:32,967 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "POST /socket.io/?EIO=4&transport=polling&t=PGGmZq4&sid=0uN-qWcLwkxR6zt4AAAA HTTP/1.1" 200 -
+2024-12-28 22:52:32,969 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE ? = conversation_participant.conversation_id
+2024-12-28 22:52:32,970 INFO sqlalchemy.engine.Engine [generated in 0.00087s] (2,)
+2024-12-28 22:52:32,973 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:32,974 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Upgrade to websocket successful
+2024-12-28 22:52:32,975 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:52:32] "GET /conversations/ HTTP/1.1" 200 -
+2024-12-28 22:52:32,979 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 2["join",{"conversation_id":2}]
+2024-12-28 22:52:32,980 INFO socketio.server received event "join" from XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:32,981 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:32,983 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE conversation_participant.conversation_id = ? AND conversation_participant.user_id = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:32,984 INFO sqlalchemy.engine.Engine [generated in 0.00078s] (2, 2, 1, 0)
+2024-12-28 22:52:32,984 INFO socketio.server XZsDLtkbLhz8Bx-zAAAB is entering room 2 [/]
+2024-12-28 22:52:32,985 INFO sockets.handlers User 2 joined room 2
+2024-12-28 22:52:32,987 INFO sqlalchemy.engine.Engine SELECT message.id AS message_id, message.content AS message_content, message.created_at AS message_created_at, message.conversation_id AS message_conversation_id, message.user_id AS message_user_id, message.sentiment_score AS message_sentiment_score, message.ai_response AS message_ai_response 
+FROM message 
+WHERE message.conversation_id = ? ORDER BY message.created_at DESC
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:32,988 INFO sqlalchemy.engine.Engine [generated in 0.00091s] (2, 50, 0)
+2024-12-28 22:52:32,989 INFO socketio.server emitting event "recent_messages" to XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:32,989 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["recent_messages",{"messages":[]}]
+2024-12-28 22:52:32,990 INFO socketio.server emitting event "status" to 2 [/]
+2024-12-28 22:52:32,990 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["status",{"message":"User joined room 2","user_id":2}]
+2024-12-28 22:52:32,991 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:35,917 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 2["send_message",{"message":"Test","conversation_id":2,"project_id":7}]
+2024-12-28 22:52:35,917 INFO socketio.server received event "send_message" from XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:35,919 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:35,920 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE conversation_participant.conversation_id = ? AND conversation_participant.user_id = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:35,920 INFO sqlalchemy.engine.Engine [cached since 2.938s ago] (2, 2, 1, 0)
+2024-12-28 22:52:35,922 INFO sqlalchemy.engine.Engine INSERT INTO message (content, created_at, conversation_id, user_id, sentiment_score, ai_response) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-28 22:52:35,923 INFO sqlalchemy.engine.Engine [generated in 0.00064s] ('Test', '2024-12-29 04:52:35.922881', 2, 2, None, None)
+2024-12-28 22:52:35,925 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:35,929 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:35,930 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:52:35,930 INFO sqlalchemy.engine.Engine [cached since 11.03s ago] (2,)
+2024-12-28 22:52:35,932 INFO sqlalchemy.engine.Engine SELECT message.id AS message_id, message.content AS message_content, message.created_at AS message_created_at, message.conversation_id AS message_conversation_id, message.user_id AS message_user_id, message.sentiment_score AS message_sentiment_score, message.ai_response AS message_ai_response 
+FROM message 
+WHERE message.id = ?
+2024-12-28 22:52:35,932 INFO sqlalchemy.engine.Engine [generated in 0.00058s] (2,)
+2024-12-28 22:52:35,933 INFO socketio.server emitting event "message" to 2 [/]
+2024-12-28 22:52:35,933 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["message",{"message":"Test","user_id":2,"username":"hperkins","project_id":7,"created_at":"2024-12-29T04:52:35.922881"}]
+2024-12-28 22:52:35,934 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:42,145 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 2["join",{"conversation_id":2}]
+2024-12-28 22:52:42,146 INFO socketio.server received event "join" from XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:42,148 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:42,148 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE conversation_participant.conversation_id = ? AND conversation_participant.user_id = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:42,149 INFO sqlalchemy.engine.Engine [cached since 9.166s ago] (2, 2, 1, 0)
+2024-12-28 22:52:42,150 INFO socketio.server XZsDLtkbLhz8Bx-zAAAB is entering room 2 [/]
+2024-12-28 22:52:42,150 INFO sockets.handlers User 2 joined room 2
+2024-12-28 22:52:42,151 INFO sqlalchemy.engine.Engine SELECT message.id AS message_id, message.content AS message_content, message.created_at AS message_created_at, message.conversation_id AS message_conversation_id, message.user_id AS message_user_id, message.sentiment_score AS message_sentiment_score, message.ai_response AS message_ai_response 
+FROM message 
+WHERE message.conversation_id = ? ORDER BY message.created_at DESC
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:42,151 INFO sqlalchemy.engine.Engine [cached since 9.165s ago] (2, 50, 0)
+2024-12-28 22:52:42,152 INFO socketio.server emitting event "recent_messages" to XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:42,153 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["recent_messages",{"messages":[{"content":"Test","user_id":2,"created_at":"2024-12-29T04:52:35.922881"}]}]
+2024-12-28 22:52:42,153 INFO socketio.server emitting event "status" to 2 [/]
+2024-12-28 22:52:42,154 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["status",{"message":"User joined room 2","user_id":2}]
+2024-12-28 22:52:42,154 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:49,553 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 2["send_message",{"message":"Test","conversation_id":2,"project_id":7}]
+2024-12-28 22:52:49,554 INFO socketio.server received event "send_message" from XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:49,556 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:49,557 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE conversation_participant.conversation_id = ? AND conversation_participant.user_id = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:49,557 INFO sqlalchemy.engine.Engine [cached since 16.57s ago] (2, 2, 1, 0)
+2024-12-28 22:52:49,559 INFO sqlalchemy.engine.Engine INSERT INTO message (content, created_at, conversation_id, user_id, sentiment_score, ai_response) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-28 22:52:49,559 INFO sqlalchemy.engine.Engine [cached since 13.64s ago] ('Test', '2024-12-29 04:52:49.559284', 2, 2, None, None)
+2024-12-28 22:52:49,561 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:52:49,566 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:49,567 INFO sqlalchemy.engine.Engine SELECT user.id AS user_id, user.username AS user_username, user.password_hash AS user_password_hash, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?
+2024-12-28 22:52:49,567 INFO sqlalchemy.engine.Engine [cached since 24.67s ago] (2,)
+2024-12-28 22:52:49,568 INFO sqlalchemy.engine.Engine SELECT message.id AS message_id, message.content AS message_content, message.created_at AS message_created_at, message.conversation_id AS message_conversation_id, message.user_id AS message_user_id, message.sentiment_score AS message_sentiment_score, message.ai_response AS message_ai_response 
+FROM message 
+WHERE message.id = ?
+2024-12-28 22:52:49,569 INFO sqlalchemy.engine.Engine [cached since 13.64s ago] (3,)
+2024-12-28 22:52:49,569 INFO socketio.server emitting event "message" to 2 [/]
+2024-12-28 22:52:49,570 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["message",{"message":"Test","user_id":2,"username":"hperkins","project_id":7,"created_at":"2024-12-29T04:52:49.559284"}]
+2024-12-28 22:52:49,570 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:52,136 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet MESSAGE data 2["join",{"conversation_id":2}]
+2024-12-28 22:52:52,136 INFO socketio.server received event "join" from XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:52,138 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:52:52,139 INFO sqlalchemy.engine.Engine SELECT conversation_participant.id AS conversation_participant_id, conversation_participant.conversation_id AS conversation_participant_conversation_id, conversation_participant.user_id AS conversation_participant_user_id, conversation_participant.joined_at AS conversation_participant_joined_at 
+FROM conversation_participant 
+WHERE conversation_participant.conversation_id = ? AND conversation_participant.user_id = ?
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:52,139 INFO sqlalchemy.engine.Engine [cached since 19.16s ago] (2, 2, 1, 0)
+2024-12-28 22:52:52,140 INFO socketio.server XZsDLtkbLhz8Bx-zAAAB is entering room 2 [/]
+2024-12-28 22:52:52,141 INFO sockets.handlers User 2 joined room 2
+2024-12-28 22:52:52,141 INFO sqlalchemy.engine.Engine SELECT message.id AS message_id, message.content AS message_content, message.created_at AS message_created_at, message.conversation_id AS message_conversation_id, message.user_id AS message_user_id, message.sentiment_score AS message_sentiment_score, message.ai_response AS message_ai_response 
+FROM message 
+WHERE message.conversation_id = ? ORDER BY message.created_at DESC
+ LIMIT ? OFFSET ?
+2024-12-28 22:52:52,142 INFO sqlalchemy.engine.Engine [cached since 19.15s ago] (2, 50, 0)
+2024-12-28 22:52:52,142 INFO socketio.server emitting event "recent_messages" to XZsDLtkbLhz8Bx-zAAAB [/]
+2024-12-28 22:52:52,143 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["recent_messages",{"messages":[{"content":"Test","user_id":2,"created_at":"2024-12-29T04:52:35.922881"},{"content":"Test","user_id":2,"created_at":"2024-12-29T04:52:49.559284"}]}]
+2024-12-28 22:52:52,143 INFO socketio.server emitting event "status" to 2 [/]
+2024-12-28 22:52:52,144 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet MESSAGE data 2["status",{"message":"User joined room 2","user_id":2}]
+2024-12-28 22:52:52,144 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-12-28 22:52:57,642 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet PING data None
+2024-12-28 22:52:57,643 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet PONG data 
+2024-12-28 22:53:22,644 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Sending packet PING data None
+2024-12-28 22:53:22,645 INFO engineio.server 0uN-qWcLwkxR6zt4AAAA: Received packet PONG data 
+2024-12-28 22:53:40,693 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\sockets\\handlers.py', reloading
+2024-12-28 22:53:40,864 INFO werkzeug  * Restarting with stat
+2024-12-28 22:53:43,756 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:53:43,756 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:53:43,779 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:53:43,780 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:53:43,781 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,782 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:53:43,782 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,783 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:53:43,784 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,784 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:53:43,784 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,785 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:53:43,786 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,786 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:53:43,787 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,787 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:53:43,792 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:53:43,793 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:53:43,793 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,794 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:53:43,794 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,795 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:53:43,795 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,796 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:53:43,797 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,798 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:53:43,798 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,799 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:53:43,799 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:43,800 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:53:43,845 INFO engineio.server Server initialized for threading.
+2024-12-28 22:53:44,653 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:53:44,698 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:53:45,153 INFO engineio.server 6_9m24QPJMFTlFGhAAAA: Sending packet OPEN data {'sid': '6_9m24QPJMFTlFGhAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000}
+2024-12-28 22:53:45,154 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:45] "GET /socket.io/?EIO=4&transport=polling&t=PGGmqyY HTTP/1.1" 200 -
+2024-12-28 22:53:45,159 INFO engineio.server 6_9m24QPJMFTlFGhAAAA: Received packet MESSAGE data 0
+2024-12-28 22:53:45,159 INFO engineio.server 6_9m24QPJMFTlFGhAAAA: Sending packet MESSAGE data 0{"sid":"ckPagbYU-rIhcGm0AAAB"}
+2024-12-28 22:53:45,160 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:45] "POST /socket.io/?EIO=4&transport=polling&t=PGGmrX5&sid=6_9m24QPJMFTlFGhAAAA HTTP/1.1" 200 -
+2024-12-28 22:53:45,456 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\sockets\\handlers.py', reloading
+2024-12-28 22:53:45,659 INFO werkzeug  * Restarting with stat
+2024-12-28 22:53:47,853 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:53:47,854 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:53:47,872 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:53:47,873 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:53:47,873 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,874 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:53:47,875 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,875 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:53:47,876 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,877 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:53:47,877 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,878 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:53:47,878 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,879 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:53:47,879 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,880 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:53:47,885 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:53:47,885 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:53:47,886 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,887 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:53:47,887 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,888 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:53:47,888 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,889 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:53:47,889 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,890 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:53:47,890 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,891 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:53:47,891 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:53:47,891 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:53:47,928 INFO engineio.server Server initialized for threading.
+2024-12-28 22:53:48,556 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:53:48,564 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:53:48,982 ERROR engineio.server Invalid session 6_9m24QPJMFTlFGhAAAA (further occurrences of this error will be logged with level INFO)
+2024-12-28 22:53:48,983 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:48] "[31m[1mGET /socket.io/?EIO=4&transport=websocket&sid=6_9m24QPJMFTlFGhAAAA HTTP/1.1[0m" 400 -
+2024-12-28 22:53:48,983 ERROR engineio.server Invalid session 6_9m24QPJMFTlFGhAAAA (further occurrences of this error will be logged with level INFO)
+2024-12-28 22:53:48,984 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:48] "[31m[1mGET /socket.io/?EIO=4&transport=polling&t=PGGmrX6&sid=6_9m24QPJMFTlFGhAAAA HTTP/1.1[0m" 400 -
+2024-12-28 22:53:49,306 INFO engineio.server Invalid session 6_9m24QPJMFTlFGhAAAA
+2024-12-28 22:53:49,306 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:49] "[31m[1mPOST /socket.io/?EIO=4&transport=polling&t=PGGmsSx&sid=6_9m24QPJMFTlFGhAAAA HTTP/1.1[0m" 400 -
+2024-12-28 22:53:49,814 INFO engineio.server yVl8sJB6q0q8johnAAAA: Sending packet OPEN data {'sid': 'yVl8sJB6q0q8johnAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000}
+2024-12-28 22:53:49,815 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:49] "GET /socket.io/?EIO=4&transport=polling&t=PGGmsfr HTTP/1.1" 200 -
+2024-12-28 22:53:50,134 INFO engineio.server yVl8sJB6q0q8johnAAAA: Received packet MESSAGE data 0
+2024-12-28 22:53:50,134 INFO engineio.server yVl8sJB6q0q8johnAAAA: Received request to upgrade to websocket
+2024-12-28 22:53:50,136 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:50] "GET /socket.io/?EIO=4&transport=polling&t=PGGmsfw&sid=yVl8sJB6q0q8johnAAAA HTTP/1.1" 200 -
+2024-12-28 22:53:50,136 INFO engineio.server yVl8sJB6q0q8johnAAAA: Sending packet MESSAGE data 0{"sid":"0LsXxp9_T4kuSsZ7AAAB"}
+2024-12-28 22:53:50,137 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:50] "POST /socket.io/?EIO=4&transport=polling&t=PGGmsfv&sid=yVl8sJB6q0q8johnAAAA HTTP/1.1" 200 -
+2024-12-28 22:53:50,372 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:53:50] "GET /socket.io/?EIO=4&transport=polling&t=PGGmsky&sid=yVl8sJB6q0q8johnAAAA HTTP/1.1" 200 -
+2024-12-28 22:53:50,375 INFO engineio.server yVl8sJB6q0q8johnAAAA: Upgrade to websocket successful
+2024-12-28 22:54:08,483 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\sockets\\handlers.py', reloading
+2024-12-28 22:54:08,655 INFO werkzeug  * Restarting with stat
+2024-12-28 22:54:10,867 INFO __main__ Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:54:10,868 INFO __main__ Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:54:10,884 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:54:10,885 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:54:10,885 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,886 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:54:10,887 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,887 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:54:10,888 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,888 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:54:10,889 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,889 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:54:10,889 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,890 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:54:10,890 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,891 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:54:10,896 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:54:10,896 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:54:10,897 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,897 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:54:10,898 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,898 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:54:10,898 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,899 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:54:10,899 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,899 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:54:10,900 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,900 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:54:10,900 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:54:10,901 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:54:10,936 INFO engineio.server Server initialized for threading.
+2024-12-28 22:54:11,528 WARNING werkzeug  * Debugger is active!
+2024-12-28 22:54:11,535 INFO werkzeug  * Debugger PIN: 106-084-206
+2024-12-28 22:54:11,884 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet OPEN data {'sid': 'YLa0yGY9ka6J156yAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000}
+2024-12-28 22:54:11,885 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:54:11] "GET /socket.io/?EIO=4&transport=polling&t=PGGmxYR HTTP/1.1" 200 -
+2024-12-28 22:54:11,889 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet MESSAGE data 0
+2024-12-28 22:54:11,890 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet MESSAGE data 0{"sid":"mAaQZILoBCKJEeQAAAAB"}
+2024-12-28 22:54:11,891 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:54:11] "POST /socket.io/?EIO=4&transport=polling&t=PGGmy2l&sid=YLa0yGY9ka6J156yAAAA HTTP/1.1" 200 -
+2024-12-28 22:54:12,196 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:54:12] "GET /socket.io/?EIO=4&transport=polling&t=PGGmy2m&sid=YLa0yGY9ka6J156yAAAA HTTP/1.1" 200 -
+2024-12-28 22:54:12,196 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received request to upgrade to websocket
+2024-12-28 22:54:12,513 INFO werkzeug 127.0.0.1 - - [28/Dec/2024 22:54:12] "GET /socket.io/?EIO=4&transport=polling&t=PGGmy7d&sid=YLa0yGY9ka6J156yAAAA HTTP/1.1" 200 -
+2024-12-28 22:54:12,516 INFO engineio.server YLa0yGY9ka6J156yAAAA: Upgrade to websocket successful
+2024-12-28 22:54:36,885 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:54:36,886 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:55:01,887 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:55:01,888 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:55:26,888 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:55:26,889 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:55:51,890 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:55:51,891 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:56:16,893 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:56:16,893 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:56:41,895 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:56:41,895 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:57:06,897 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:57:06,898 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:57:31,899 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:57:31,900 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:57:56,901 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:57:56,902 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:58:13,911 INFO app Static folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\frontend
+2024-12-28 22:58:13,911 INFO app Uploads folder path: C:\Users\htper\OneDrive\Folder\chats\real_time_chat_app\backend\uploads
+2024-12-28 22:58:13,929 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:58:13,930 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:58:13,930 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,931 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:58:13,932 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,932 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:58:13,933 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,933 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:58:13,934 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,934 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:58:13,935 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,936 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:58:13,936 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,937 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:58:13,942 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-12-28 22:58:13,942 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2024-12-28 22:58:13,943 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,943 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project")
+2024-12-28 22:58:13,944 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,944 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_file")
+2024-12-28 22:58:13,945 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,945 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation")
+2024-12-28 22:58:13,946 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,946 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("conversation_participant")
+2024-12-28 22:58:13,946 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,947 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("message")
+2024-12-28 22:58:13,948 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-12-28 22:58:13,948 INFO sqlalchemy.engine.Engine COMMIT
+2024-12-28 22:58:21,903 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:58:21,904 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:58:46,905 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:58:46,906 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:59:11,907 INFO engineio.server YLa0yGY9ka6J156yAAAA: Sending packet PING data None
+2024-12-28 22:59:11,908 INFO engineio.server YLa0yGY9ka6J156yAAAA: Received packet PONG data 
+2024-12-28 22:59:22,632 INFO werkzeug  * Detected change in 'C:\\Users\\htper\\OneDrive\\Folder\\chats\\real_time_chat_app\\backend\\ai_assistant.py', reloading
+2024-12-28 22:59:22,802 INFO werkzeug  * Restarting with stat
+2024-12-28 22:59:44,074 INFO werkzeug  * Restarting with stat
+2024-12-28 22:59:57,551 INFO werkzeug  * Restarting with stat
+2024-12-28 23:00:10,882 INFO werkzeug  * Restarting with stat
+2024-12-28 23:03:36,455 INFO werkzeug  * Restarting with stat
+2024-12-28 23:03:46,272 INFO werkzeug  * Restarting with stat
