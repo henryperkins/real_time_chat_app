@@ -183,6 +183,27 @@
             font-size: 0.8rem;
             margin-top: 0.25rem;
         }
+        .model-management {
+            margin-top: 1rem;
+        }
+        .model-item {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .new-model-btn {
+            padding: 0.5rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .new-model-btn:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -204,6 +225,11 @@
                 <button class="new-conversation-btn secondary" onclick="window.location.href='project_management.html'">Manage Projects</button>
             </div>
             <div class="conversation-list" id="conversation-list"></div>
+            <div class="model-management">
+                <h3>Model Management</h3>
+                <div id="model-list"></div>
+                <button class="new-model-btn" onclick="loadModels()">Refresh Models</button>
+            </div>
         </div>
 
         <div class="chat-container">
@@ -396,8 +422,55 @@
             messageInput.value = '';
         });
 
+        async function loadModels() {
+            try {
+                const response = await fetch('/models', {
+                    credentials: 'include'
+                });
+                const models = await response.json();
+                const modelListDiv = document.getElementById('model-list');
+                modelListDiv.innerHTML = '';
+                
+                models.forEach(model => {
+                    const div = document.createElement('div');
+                    div.className = 'model-item';
+                    div.innerHTML = `
+                        <strong>${model.name}</strong>
+                        <span>(${model.model})</span>
+                        <button onclick="setActiveModel('${model.purpose}')">Set Active</button>
+                    `;
+                    modelListDiv.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Failed to load models:', error);
+            }
+        }
+
+        async function setActiveModel(purpose) {
+            try {
+                const response = await fetch('/models/active', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ purpose })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    alert(`Active model set to ${data.model}`);
+                    loadModels(); // Refresh the model list to show the active model
+                } else {
+                    alert(data.error || 'Failed to set active model');
+                }
+            } catch (error) {
+                console.error('Failed to set active model:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
+
         // Initialize the application
-        checkAuth();
+        checkAuth().then(() => loadModels());
     </script>
 </body>
 </html>

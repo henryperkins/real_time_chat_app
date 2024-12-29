@@ -9,9 +9,7 @@ import asyncio
 
 from config import config
 from models import db
-from routes.auth import auth_bp
-from routes.projects import projects_bp
-from routes.conversations import conversations_bp
+from routes import register_blueprints
 from sockets.handlers import WebSocketManager
 from azure_openai_config import AzureOpenAIConfig
 
@@ -77,9 +75,7 @@ def create_app(config_name='development'):
          })
     
     # Register blueprints
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(projects_bp)
-    app.register_blueprint(conversations_bp)
+    register_blueprints(app)
     
     # Serve frontend files
     @app.route('/')
