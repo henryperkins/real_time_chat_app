@@ -19,7 +19,7 @@ os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, 'app.log')
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    format='%(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)d %(message)s',
     handlers=[
         logging.FileHandler(log_file),
         logging.StreamHandler()
@@ -62,7 +62,7 @@ def create_app(config_name='development'):
          supports_credentials=True,
          resources={
              r"/*": {
-                 "origins": app.config['SOCKETIO_CORS_ALLOWED_ORIGINS'],
+                 "origins": app.config.get('SOCKETIO_CORS_ALLOWED_ORIGINS', '*'),
                  "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
                  "allow_headers": ["Content-Type"],
                  "expose_headers": ["Content-Range", "X-Content-Range"],
@@ -122,6 +122,15 @@ def create_app(config_name='development'):
         logger.error(f"Unhandled exception: {str(error)}", exc_info=True)
         return jsonify({
             "error": "An unexpected error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
+    
+    @app.errorhandler(db.OperationalError)
+    def handle_db_error(error):
+        logger.error(f"Database error: {str(error)}", exc_info=True)
+        return jsonify({
+            "error": "A database error occurred",
             "details": str(error),
             "status_code": 500
         }), 500
