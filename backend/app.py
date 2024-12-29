@@ -48,9 +48,6 @@ def create_app(config_name='development'):
     
     # Load configuration
     app.config.from_object(config[config_name])
-    # Set database path
-    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'real_time_chat.db')
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     config[config_name].init_app(app)
     
     # Set session lifetime
@@ -61,11 +58,11 @@ def create_app(config_name='development'):
     # Initialize database
     with app.app_context():
         db.create_all()
-    CORS(app, 
+    CORS(app,
          supports_credentials=True,
          resources={
              r"/*": {
-                 "origins": ["*"],
+                 "origins": app.config['SOCKETIO_CORS_ALLOWED_ORIGINS'],
                  "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
                  "allow_headers": ["Content-Type"],
                  "expose_headers": ["Content-Range", "X-Content-Range"],
@@ -105,17 +102,17 @@ def create_app(config_name='development'):
     @app.errorhandler(404)
     def not_found_error(error):
         logger.error(f"404 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "Resource not found"}), 404
+        return jsonify({"error": "Resource not found", "details": str(error)}), 404
 
     @app.errorhandler(500)
     def internal_error(error):
         logger.error(f"500 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An internal error occurred"}), 500
+        return jsonify({"error": "An internal error occurred", "details": str(error)}), 500
 
     @app.errorhandler(Exception)
     def handle_error(error):
         logger.error(f"Unhandled error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An unexpected error occurred"}), 500
+        return jsonify({"error": "An unexpected error occurred", "details": str(error)}), 500
     
     # Create database tables
     with app.app_context():
