@@ -9,7 +9,7 @@ from middleware.auth import login_required
 logger = logging.getLogger(__name__)
 
 # Create blueprint
-projects_bp = Blueprint('projects', __name__, url_prefix='/projects', strict_slashes=False)
+projects_bp = Blueprint('projects', __name__, url_prefix='/projects')
 
 
 @projects_bp.route('/', methods=['GET', 'POST'])
