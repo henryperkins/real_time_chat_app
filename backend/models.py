@@ -103,12 +103,19 @@ class ConversationParticipant(db.Model):
         db.ForeignKey('user.id'),
         nullable=False
     )
+<<<<<<< HEAD
     joined_at: datetime = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, conversation_id: int, user_id: int) -> None:
         """Initialize a new conversation participant."""
         self.conversation_id = conversation_id
         self.user_id = user_id
+=======
+    joined_at = db.Column(db.DateTime, default=datetime.utcnow)
+    __table_args__ = (
+        db.Index('idx_conversation_user', 'conversation_id', 'user_id'),
+    )
+>>>>>>> 3f131548aae059f728b4edd5d7dc3636158ff180
 
 
 class Message(db.Model):

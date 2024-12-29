@@ -1,10 +1,11 @@
 """WebSocket event handlers."""
+
 import logging
 from typing import Optional, Dict, Any, cast
-from flask import session
+from flask import session, request
 from flask_socketio import join_room, emit
 from sqlalchemy.orm import Session
-from sqlalchemy import desc, text
+from sqlalchemy import text
 from models import db, Message, User, ConversationParticipant
 from middleware.auth import socket_auth_required
 from ai_assistant import AIAssistant
@@ -19,147 +20,125 @@ logger = logging.getLogger(__name__)
 
 class WebSocketManager:
     """Manages WebSocket events and handlers."""
-    
+
     def __init__(self, socketio):
         """Initialize the WebSocket manager."""
         self.socketio = socketio
         self.ai_assistant = AIAssistant()
         self.setup_handlers()
-    
+
     def setup_handlers(self):
         """Set up WebSocket event handlers."""
-        @self.socketio.on('join')
+
+        @self.socketio.on("join")
         @socket_auth_required
         async def handle_join(data):
             """Handle user joining a conversation room."""
-            logger.info("handle_send_message triggered with data: %s", data)
+            logger.info(f"handle_join triggered with data: {data}")
             try:
-                room = data.get('conversation_id')
+                room = data.get("conversation_id")
                 if not room:
                     logger.error("No conversation_id provided")
-                    return False
-
-                user_id = session['user_id']
-                
-                # Verify user is a participant
-                participant = ConversationParticipant.query.filter_by(
-                    conversation_id=room,
-                    user_id=user_id
-                ).first()
-                
-                if not participant:
-                    logger.warning(
-                        "Unauthorized join: User %d for room %d",
-                        user_id, room
+                    emit(
+                        "error",
+                        {"message": "No conversation_id provided"},
+                        to=request.sid,
                     )
                     return False
-                
-                join_room(room)
-                logger.info("User %d joined room %d", user_id, room)
 
-                # Get recent messages using text() for ordering
+                user_id = session.get("user_id")
+                participant = ConversationParticipant.query.filter_by(
+                    conversation_id=room, user_id=user_id
+                ).first()
+
+                if not participant:
+                    logger.warning(f"Unauthorized join: User {user_id} for room {room}")
+                    emit("error", {"message": "Unauthorized access"}, to=request.sid)
+                    return False
+
+                join_room(room)
+                logger.info(f"User {user_id} joined room {room}")
+
                 messages = (
-                    Message.query
-                    .filter(Message.conversation_id == room)
-                    .order_by(text('created_at DESC'))
+                    Message.query.filter_by(conversation_id=room)
+                    .order_by(Message.created_at.desc())
                     .limit(50)
                     .all()
                 )
-                
-                # Emit recent messages to the user
-                emit('recent_messages', {
-                    'messages': [{
-                        'content': msg.content,
-                        'user_id': msg.user_id,
-                        'created_at': msg.created_at.isoformat()
-                    } for msg in reversed(messages)]
-                })
-                
+
+                emit(
+                    "recent_messages",
+                    {
+                        "messages": [
+                            {
+                                "content": msg.content,
+                                "user_id": msg.user_id,
+                                "created_at": msg.created_at.isoformat(),
+                            }
+                            for msg in reversed(messages)
+                        ]
+                    },
+                    to=request.sid,
+                )
+
                 emit(
                     "status",
-                    {
-                        "message": f"User joined room {room}",
-                        "user_id": user_id
-                    },
-                    to=room
+                    {"message": f"User joined room {room}", "user_id": user_id},
+                    to=room,
                 )
-            except Exception as e:
-                logger.error("Error in handle_join: %s", str(e), exc_info=True)
-                return False
 
-        @self.socketio.on('send_message')
+            except Exception as e:
+                logger.error(f"Error in handle_join: {str(e)}", exc_info=True)
+                emit(
+                    "error", {"message": "Failed to join conversation"}, to=request.sid
+                )
+
+        @self.socketio.on("send_message")
         @socket_auth_required
         async def handle_send_message(data):
             """Handle sending a message in a conversation."""
-            room = None
+            logger.info(f"handle_send_message triggered with data: {data}")
             try:
-                room = data.get('conversation_id')
+                room = data.get("conversation_id")
                 if not room:
                     logger.error("No conversation_id provided")
-                    return False
-
-                message_text = data.get('message')
-                user_id = session['user_id']
-                project_id = data.get('project_id')
-                
-                # Verify user is a participant
-                participant = ConversationParticipant.query.filter_by(
-                    conversation_id=room,
-                    user_id=user_id
-                ).first()
-                
-                if not participant:
-                    logger.warning(
-                        "Unauthorized message: User %d for room %d",
-                        user_id, room
+                    emit(
+                        "error",
+                        {"message": "No conversation_id provided"},
+                        to=request.sid,
                     )
                     return False
-                
+
+                message_text = data.get("message")
+                user_id = session.get("user_id")
+                project_id = data.get("project_id")
+
+                participant = ConversationParticipant.query.filter_by(
+                    conversation_id=room, user_id=user_id
+                ).first()
+
+                if not participant:
+                    logger.warning(
+                        f"Unauthorized message: User {user_id} for room {room}"
+                    )
+                    emit("error", {"message": "Unauthorized access"}, to=request.sid)
+                    return False
+
+                # Save user message to the database
+                new_message = Message(
+                    content=message_text, conversation_id=room, user_id=user_id
+                )
+                db.session.add(new_message)
+                db.session.commit()
+
                 # Get user information
                 user = User.query.get(user_id)
                 if not user:
                     logger.error(f"User {user_id} not found")
+                    emit("error", {"message": "User not found"}, to=request.sid)
                     return False
 
-                # Get or create AI user with proper type checking
-                ai_user = cast(Optional[User], User.query.filter_by(username='AI Assistant').first())
-                if not ai_user:
-                    # Create AI user with a dummy password hash
-                    ai_user = User(
-                        username='AI Assistant',
-                        password_hash='$ai$assistant$not$used$'
-                    )
-                    db.session.add(ai_user)
-                    db.session.commit()
-                    # Refresh after commit to ensure all attributes are loaded
-                    db.session.refresh(ai_user)
-
-                try:
-                    # Save user message to database with proper type hints
-                    new_message = Message(
-                        content=str(message_text),
-                        conversation_id=int(room),
-                        user_id=int(user_id),
-                        ai_response=None  # Not an AI response
-                    )
-                    db.session.add(new_message)
-                    db.session.commit()
-                    # Refresh to ensure all attributes are loaded
-                    db.session.refresh(new_message)
-                except (ValueError, TypeError) as e:
-                    logger.error(f"Invalid data types: {str(e)}")
-                    return False
-
-                # Get recent conversation history using text() for ordering
-                history = (
-                    Message.query
-                    .filter(Message.conversation_id == room)
-                    .order_by(text('created_at DESC'))
-                    .limit(10)
-                    .all()
-                )
-                
-                # Emit user message first
+                # Emit user message
                 emit(
                     "message",
                     {
@@ -168,65 +147,57 @@ class WebSocketManager:
                         "username": user.username,
                         "project_id": project_id,
                         "created_at": new_message.created_at.isoformat(),
-                        "is_ai": False
+                        "is_ai": False,
                     },
-                    to=room
+                    to=room,
                 )
 
                 # Notify that AI is typing
                 emit(
                     "ai_status",
-                    {
-                        "status": "typing",
-                        "user_id": ai_user.id,
-                        "username": "AI Assistant"
-                    },
-                    to=room
+                    {"status": "typing", "user_id": None, "username": "AI Assistant"},
+                    to=room,
                 )
-                
+
                 # Generate AI response asynchronously
-                ai_response = await self.ai_assistant.get_ai_response(
-                    message_text,
-                    [msg.content for msg in reversed(history)],
-                    project_id
+                history = (
+                    Message.query.filter(Message.conversation_id == room)
+                    .order_by(text("created_at DESC"))
+                    .limit(10)
+                    .all()
                 )
-                
-                # Check for errors in AI response
+                ai_response = await self.ai_assistant.get_ai_response(
+                    message_text, [msg.content for msg in reversed(history)], project_id
+                )
+
                 if ai_response.get("error"):
                     emit(
                         "ai_status",
                         {
                             "status": "error",
                             "message": ai_response["content"],
-                            "user_id": ai_user.id
+                            "user_id": None,
                         },
-                        to=room
+                        to=room,
                     )
                     return
-                
-                try:
-                    # Save AI response with proper type hints
-                    ai_message = Message(
-                        content=str(ai_response["content"]),
-                        conversation_id=int(room),
-                        user_id=int(ai_user.id),
-                        ai_response=str(ai_response["content"])  # Store the actual response
+
+                # Save AI response to the database
+                ai_user = User.query.filter_by(username="AI Assistant").first()
+                if not ai_user:
+                    ai_user = User(
+                        username="AI Assistant", password_hash="$ai$assistant$not$used$"
                     )
-                    db.session.add(ai_message)
+                    db.session.add(ai_user)
                     db.session.commit()
-                    # Refresh to ensure all attributes are loaded
-                    db.session.refresh(ai_message)
-                except (ValueError, TypeError, KeyError) as e:
-                    logger.error(f"Error saving AI response: {str(e)}")
-                    emit(
-                        "error",
-                        {
-                            "message": "Failed to save AI response",
-                            "details": str(e)
-                        },
-                        to=room
-                    )
-                    return False
+
+                ai_message = Message(
+                    content=ai_response["content"],
+                    conversation_id=room,
+                    user_id=ai_user.id,
+                )
+                db.session.add(ai_message)
+                db.session.commit()
 
                 # Emit AI response
                 emit(
@@ -239,9 +210,9 @@ class WebSocketManager:
                         "created_at": ai_message.created_at.isoformat(),
                         "is_ai": True,
                         "model": ai_response.get("model"),
-                        "finish_reason": ai_response.get("finish_reason")
+                        "finish_reason": ai_response.get("finish_reason"),
                     },
-                    to=room
+                    to=room,
                 )
 
                 # Notify that AI is done typing
@@ -250,20 +221,11 @@ class WebSocketManager:
                     {
                         "status": "completed",
                         "user_id": ai_user.id,
-                        "username": "AI Assistant"
+                        "username": "AI Assistant",
                     },
-                    to=room
+                    to=room,
                 )
 
             except Exception as e:
-                logger.error("Error in handle_send_message: %s", str(e))
-                if room:  # Only emit if we have a valid room
-                    emit(
-                        "error",
-                        {
-                            "message": "Failed to process message",
-                            "details": str(e)
-                        },
-                        to=room
-                    )
-                return False
+                logger.error(f"Error in handle_send_message: {str(e)}", exc_info=True)
+                emit("error", {"message": "Failed to process message"}, to=request.sid)

@@ -1,0 +1,82 @@
+name: "CodeQL - Python & React"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    # Weekly scan on Wednesdays at 03:36 UTC
+    - cron: '36 3 * * 3'
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+
+    permissions:
+      security-events: write
+      packages: read
+      contents: read
+      actions: read  # Optional for private repositories
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: python
+            build-mode: none
+          - language: javascript-typescript
+            build-mode: none
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. (Python) Set up Python & install dependencies
+      - name: Set up Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Python dependencies
+        if: matrix.language == 'python'
+        run: |
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      # 3. (JavaScript/TypeScript) Set up Node & install dependencies
+      - name: Set up Node
+        if: matrix.language == 'javascript-typescript'
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install Node dependencies
+        if: matrix.language == 'javascript-typescript'
+        run: |
+          npm install
+
+      # 4. OPTIONAL: Build React app (if applicable)
+      - name: Build React
+        if: matrix.language == 'javascript-typescript'
+        run: |
+          npm run build || echo "Build failed or not necessary. Continuing CodeQL scan..."
+
+      # 5. Initialize CodeQL with config file
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          config-file: .github/codeql/codeql-config.yml
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      # 6. Analyze
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"

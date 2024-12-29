@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management - Real-Time Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .main-container {
+            flex: 1;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .project-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .file-list {
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .modal-content {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav-links">
+            <a href="index.html">Chat</a>
+            <a href="project_management.html">Projects</a>
+        </div>
+        <button class="btn btn-secondary" onclick="handleLogout()">Logout</button>
+    </div>
+
+    <div class="main-container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Projects</h2>
+            <button class="btn btn-primary" onclick="showNewProjectModal()">New Project</button>
+        </div>
+        <div class="project-list" id="project-list"></div>
+    </div>
+
+    <!-- New Project Modal -->
+    <div class="modal" id="new-project-modal">
+        <div class="modal-content">
+            <h2>Create New Project</h2>
+            <form id="new-project-form" onsubmit="handleCreateProject(event)">
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="language-model">Language Model</label>
+                    <select id="language-model" required>
+                        <option value="gpt-4o">GPT-4O</option>
+                        <option value="o1-preview">O1-Preview</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Project</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideNewProjectModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- File Upload Modal -->
+    <div class="modal" id="file-upload-modal">
+        <div class="modal-content">
+            <h2>Project Files</h2>
+            <form id="file-upload-form">
+                <div class="form-group">
+                    <label for="file-input">Upload File</label>
+                    <input type="file" id="file-input">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="handleFileUpload()">Upload</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideFileUploadModal()">Close</button>
+                </div>
+            </form>
+            <div class="file-list" id="file-list"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentProjectId = null;
+
+        // Check authentication on page load
+        async function checkAuth() {
+            try {
+                const response = await fetch('/auth/check', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                if (!data.authenticated) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                loadProjects();
+            } catch (error) {
+                console.error('Auth check failed:', error);
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function loadProjects() {
+            try {
+                const response = await fetch('/projects', {
+                    credentials: 'include'
+                });
+                const projects = await response.json();
+                const listElement = document.getElementById('project-list');
+                listElement.innerHTML = '';
+                
+                projects.forEach(project => {
+                    const div = document.createElement('div');
+                    div.className = 'project-card';
+                    div.innerHTML = `
+                        <h3>${project.name}</h3>
+                        <p>Model: ${project.language_model}</p>
+                        <div class="project-actions">
+                            <button class="btn btn-primary" onclick="openChat(${project.id})">Open Chat</button>
+                            <button class="btn btn-secondary" onclick="showFileUploadModal(${project.id})">Manage Files</button>
+                        </div>
+                    `;
+                    listElement.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Failed to load projects:', error);
+            }
+        }
+
+        function showNewProjectModal() {
+            document.getElementById('new-project-modal').style.display = 'flex';
+        }
+
+        function hideNewProjectModal() {
+            document.getElementById('new-project-modal').style.display = 'none';
+        }
+
+        function showFileUploadModal(projectId) {
+            currentProjectId = projectId;
+            document.getElementById('file-upload-modal').style.display = 'flex';
+            loadProjectFiles(projectId);
+        }
+
+        function hideFileUploadModal() {
+            document.getElementById('file-upload-modal').style.display = 'none';
+            currentProjectId = null;
+        }
+
+        async function handleCreateProject(event) {
+            event.preventDefault();
+            const name = document.getElementById('project-name').value;
+            const languageModel = document.getElementById('language-model').value;
+
+            try {
+                const response = await fetch('/projects', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ name, language_model: languageModel })
+                });
+
+                if (response.ok) {
+                    hideNewProjectModal();
+                    loadProjects();
+                } else {
+                    const data = await response.json();
+                    alert(data.error || 'Failed to create project');
+                }
+            } catch (error) {
+                console.error('Failed to create project:', error);
+                alert('Failed to create project');
+            }
+        }
+
+        async function loadProjectFiles(projectId) {
+            try {
+                const response = await fetch(`/projects/${projectId}/files`, {
+                    credentials: 'include'
+                });
+                const files = await response.json();
+                const listElement = document.getElementById('file-list');
+                listElement.innerHTML = '';
+                
+                files.forEach(file => {
+                    const div = document.createElement('div');
+                    div.className = 'file-item';
+                    div.innerHTML = `
+                        <span>${file.filename}</span>
+                        <small>${new Date(file.uploaded_at).toLocaleString()}</small>
+                    `;
+                    listElement.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Failed to load files:', error);
+            }
+        }
+
+        async function handleFileUpload() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch(`/projects/${currentProjectId}/files`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    fileInput.value = '';
+                    loadProjectFiles(currentProjectId);
+                } else {
+                    const data = await response.json();
+                    alert(data.error || 'Failed to upload file');
+                }
+            } catch (error) {
+                console.error('Failed to upload file:', error);
+                alert('Failed to upload file');
+            }
+        }
+
+        function openChat(projectId) {
+            window.location.href = `index.html?project=${projectId}`;
+        }
+
+        async function handleLogout() {
+            try {
+                await fetch('/auth/logout', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Logout failed:', error);
+            }
+        }
+
+        // Initialize the page
+        checkAuth();
+    </script>
+</body>
+</html>

@@ -1,31 +1,50 @@
-"""Main application module."""
+from sqlalchemy.exc import OperationalError
 import os
 import logging
 from datetime import timedelta
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
+import asyncio
+from dotenv import load_dotenv
 
 from config import config
 from models import db
-from routes.auth import auth_bp
-from routes.projects import projects_bp
-from routes.conversations import conversations_bp
+from routes import register_blueprints
 from sockets.handlers import WebSocketManager
+from azure_openai_config import AzureOpenAIConfig
 
-# Set up logging
+# Load environment variables from .env file
+load_dotenv(dotenv_path='../.env')
+
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
 os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, 'app.log')
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    format='%(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)d %(message)s',
     handlers=[
         logging.FileHandler(log_file),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
+
+async def create_azure_openai_config():
+    """Create and initialize AzureOpenAIConfig asynchronously."""
+    global azure_openai
+    try:
+        # Ensure environment variables are loaded
+        load_dotenv(dotenv_path='../.env')
+        azure_openai = AzureOpenAIConfig()
+        await azure_openai.async_init()
+    except Exception as e:
+        logger.error(
+            f"Failed to initialize AzureOpenAIConfig: {str(e)}. "
+            f"Check AZURE_OPENAI_ENDPOINT and network connectivity.",
+            exc_info=True
+        )
+        azure_openai = None  # Ensure it is explicitly set to None
 
 def create_app(config_name='development'):
     """Create and configure the Flask application."""
@@ -48,9 +67,6 @@ def create_app(config_name='development'):
     
     # Load configuration
     app.config.from_object(config[config_name])
-    # Set database path
-    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'real_time_chat.db')
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     config[config_name].init_app(app)
     
     # Set session lifetime
@@ -61,11 +77,11 @@ def create_app(config_name='development'):
     # Initialize database
     with app.app_context():
         db.create_all()
-    CORS(app, 
+    CORS(app,
          supports_credentials=True,
          resources={
              r"/*": {
-                 "origins": ["*"],
+                 "origins": app.config.get('SOCKETIO_CORS_ALLOWED_ORIGINS', '*'),
                  "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
                  "allow_headers": ["Content-Type"],
                  "expose_headers": ["Content-Range", "X-Content-Range"],
@@ -74,9 +90,7 @@ def create_app(config_name='development'):
          })
     
     # Register blueprints
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(projects_bp)
-    app.register_blueprint(conversations_bp)
+    register_blueprints(app)
     
     # Serve frontend files
     @app.route('/')
@@ -90,13 +104,15 @@ def create_app(config_name='development'):
 
     @app.route('/favicon.ico')
     def favicon():
-        return '', 204
+        return app.send_static_file('favicon.ico')
 
     @app.route('/<path:filename>')
     def serve_static(filename):
         try:
             logger.info(f"Serving static file: {filename}")
-            return app.send_static_file(filename)
+            response = app.send_static_file(filename)
+            response.headers['Cache-Control'] = 'public, max-age=300'  # 5 minutes
+            return response
         except Exception as e:
             logger.error(f"Failed to serve {filename}: {str(e)}", exc_info=True)
             return '', 404
@@ -105,22 +121,46 @@ def create_app(config_name='development'):
     @app.errorhandler(404)
     def not_found_error(error):
         logger.error(f"404 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "Resource not found"}), 404
+        return jsonify({
+            "error": "Resource not found",
+            "details": str(error),
+            "status_code": 404
+        }), 404
 
     @app.errorhandler(500)
     def internal_error(error):
         logger.error(f"500 error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An internal error occurred"}), 500
+        return jsonify({
+            "error": "An internal server error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
 
     @app.errorhandler(Exception)
     def handle_error(error):
-        logger.error(f"Unhandled error: {str(error)}", exc_info=True)
-        return jsonify({"error": "An unexpected error occurred"}), 500
+        logger.error(f"Unhandled exception: {str(error)}", exc_info=True)
+        return jsonify({
+            "error": "An unexpected error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
+    
+    @app.errorhandler(OperationalError)
+    def handle_db_error(error):
+        logger.error(f"Database error: {str(error)}", exc_info=True)
+        return jsonify({
+            "error": "A database error occurred",
+            "details": str(error),
+            "status_code": 500
+        }), 500
     
     # Create database tables
     with app.app_context():
         db.create_all()
     
+    # Initialize AzureOpenAIConfig asynchronously
+    asyncio.run(create_azure_openai_config())
+
     return app
 
 def create_socketio(app):
@@ -141,4 +181,4 @@ def create_socketio(app):
 if __name__ == '__main__':
     app = create_app(os.getenv('FLASK_ENV', 'development'))
     socketio = create_socketio(app)
-    socketio.run(app, debug=app.config['DEBUG'])
+    socketio.run(app, host='0.0.0.0', port=5000, debug=False, use_reloader=False)

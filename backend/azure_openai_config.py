@@ -4,6 +4,7 @@ from typing import Optional, Dict, Any, List
 import os
 import json
 import logging
+import asyncio
 from openai import AsyncAzureOpenAI, OpenAIError
 from dotenv import load_dotenv
 # Set up logging
@@ -43,34 +44,49 @@ class AzureOpenAIConfig:
         api_version = os.getenv(
             'AZURE_OPENAI_API_VERSION',
             '2024-12-01-preview'
+            '2024-12-01-preview'
         )
 
         if not all([azure_endpoint, api_key]):
             raise ValueError(
                 "Missing required Azure OpenAI configuration. "
-                "Please set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY "
+                "Please set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY "
                 "environment variables."
             )
 
-        # Store configuration after validation
-        self.azure_endpoint = azure_endpoint
-        self.api_key = api_key
-        self.api_version = api_version
-
-        # Initialize client with validated configuration
         self.client = AsyncAzureOpenAI(
             azure_endpoint=azure_endpoint,  # type: ignore
             api_key=api_key,  # type: ignore
             api_version=api_version
         )
 
-        # Load deployment configurations
-        self.deployments = self._load_deployments()
-        logger.info(
-            f"Loaded {len(self.deployments)} deployments"
-        )
+        self.deployments = {}
 
-    def _load_deployments(self) -> Dict[str, DeploymentConfig]:
+    async def async_init(self):
+        """Asynchronously initialize Azure OpenAI configuration."""
+        self.deployments = await self._load_deployments()
+        if len(self.deployments) <= 1:
+            logger.warning(f"Only {len(self.deployments)} deployment(s) loaded. Expected more.")
+        else:
+            logger.info(f"Loaded {len(self.deployments)} deployments")
+
+    async def fetch_models(self) -> List[Dict[str, Any]]:
+        """Fetch all models available for the Azure OpenAI resource."""
+        retries = 3
+        for attempt in range(retries):
+            try:
+                response = await self.client.models.list()
+                return response.data
+            except Exception as e:
+                logger.error(f"Error fetching models (attempt {attempt + 1}/{retries}): {str(e)}")
+                if attempt < retries - 1:
+                    logger.warning(f"Retrying connection in {2 ** attempt} seconds...")
+                    await asyncio.sleep(2 ** attempt)  # Exponential backoff
+                else:
+                    logger.error("All retries failed. Unable to fetch models.")
+                    raise
+
+    async def _load_deployments(self) -> Dict[str, DeploymentConfig]:
         """Load deployment configurations from environment."""
         deployments = {}
         deployment_str = os.getenv('AZURE_OPENAI_DEPLOYMENTS')
@@ -86,17 +102,53 @@ class AzureOpenAIConfig:
                         max_tokens=deploy.get('max_tokens', None)
                     )
                     deployments[deploy['purpose']] = config
+            except json.JSONDecodeError as e:
+                logger.error(f"Error parsing JSON for deployments: {str(e)}")
+            except KeyError as e:
+                logger.error(f"Missing key in deployment configuration: {str(e)}")
             except Exception as e:
-                logger.error(f"Error loading deployments: {str(e)}")
+                logger.error(f"Unexpected error loading deployments: {str(e)}")
         
-        # Add default deployment if none specified
+        # Fetch models to dynamically set the default
+        models = await self.fetch_models()
+        default_model = None
+        
         if not deployments:
-            default_deployment = os.getenv('AZURE_OPENAI_DEPLOYMENT', 'gpt-4')
-            deployments['default'] = DeploymentConfig(
-                name=default_deployment,
-                model='gpt-4',
-                purpose='default'
-            )
+            # If no deployments are specified, choose the first generally available model
+            for model in models:
+                if model['lifecycle_status'] == 'generally-available':
+                    default_model = model['id']
+                    break
+            
+            if default_model:
+                logger.warning("No deployments specified. Falling back to default configuration.")
+                deployments['default'] = DeploymentConfig(
+                    name=default_model,
+                    model=default_model,
+                    purpose='default'
+                )
+            else:
+                logger.warning("No generally available models found. Using 'gpt-4' as default.")
+                deployments['default'] = DeploymentConfig(
+                    name='gpt-4',
+                    model='gpt-4',
+                    purpose='default'
+                )
+        else:
+            # If deployments are specified, check if they are valid
+            for purpose, config in deployments.items():
+                found = False
+                for model in models:
+                    if model['id'] == config.model:
+                        found = True
+                        break
+                if not found:
+                    logger.warning(f"Deployment model '{config.model}' not found. Using 'gpt-4' as default for purpose '{purpose}'.")
+                    deployments[purpose] = DeploymentConfig(
+                        name='gpt-4',
+                        model='gpt-4',
+                        purpose=purpose
+                    )
         
         return deployments
 
@@ -123,51 +175,40 @@ class AzureOpenAIConfig:
         try:
             deployment = self.get_deployment(purpose)
             
-            # Determine if this is an o1 series model
-            is_o1_model = any(
-                deployment.model.startswith(prefix)
-                for prefix in ['o1-', 'o1']
-            )
-            
-            # Format messages appropriately
-            formatted_messages = []
-            for msg in messages:
-                if is_o1_model and msg['role'] == 'system':
-                    # Convert system messages to developer messages for o1 models
-                    formatted_messages.append({
-                        'role': 'developer',
-                        'content': msg['content'].strip()
-                    })
-                else:
-                    formatted_messages.append({
-                        'role': msg['role'],
-                        'content': msg['content'].strip()
-                    })
-            
-            # Build parameters based on model type
-            params = {
-                'model': deployment.name,
-                'messages': formatted_messages,
-            }
-            
-            if is_o1_model:
-                # o1 series specific parameters
-                params['max_completion_tokens'] = (
-                    max_completion_tokens or
-                    max_tokens or
-                    deployment.max_tokens
+            # Handle special requirements for o1-preview model
+            if deployment.model == 'o1-preview':
+                # Create a new client with specific API version for o1-preview
+                o1_client = AsyncAzureOpenAI(
+                    azure_endpoint=self.azure_endpoint,
+                    api_key=self.api_key,
+                    api_version="2024-12-01-preview"  # Updated API version for o1-preview
                 )
-                params['temperature'] = 1.0  # Required for o1 series
-                if reasoning_effort:
-                    params['reasoning_effort'] = reasoning_effort
+                
+                # Remove system messages as they're not supported
+                messages = [msg for msg in messages if msg['role'] != 'system']
+                # Format messages for o1-preview (keeping only user messages)
+                messages = [{
+                    'role': msg['role'],
+                    'content': msg['content'].strip()
+                } for msg in messages if msg['role'] != 'system']
+                
+                # Use the parameters as shown in the example
+                params = {
+                    'model': deployment.name,
+                    'messages': messages,
+                    'max_completion_tokens': max_completion_tokens or max_tokens or deployment.max_tokens,
+                    'temperature': 1.0  # o1-preview requires temperature=1
+                }
+                response = await o1_client.chat.completions.create(**params)
             else:
                 # Standard parameters for other models
-                params['max_tokens'] = max_tokens or deployment.max_tokens
-                if temperature is not None:
-                    params['temperature'] = temperature
-            
-            # Make API call
-            response = await self.client.chat.completions.create(**params)
+                params = {
+                    'model': deployment.name,
+                    'messages': messages,
+                    'max_tokens': max_tokens or deployment.max_tokens,
+                    'temperature': temperature
+                }
+                response = await self.client.chat.completions.create(**params)
             
             # Extract content filter results if available
             content_filter_results = (
@@ -316,4 +357,4 @@ class AzureOpenAIError(Exception):
 
 
 # Create a global instance
-azure_openai = AzureOpenAIConfig()
+azure_openai = None  # This will be initialized asynchronously in app.py

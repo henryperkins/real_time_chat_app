@@ -5,6 +5,7 @@ import asyncio
 import logging
 from azure_openai_config import azure_openai, AzureOpenAIError
 from dotenv import load_dotenv
+<<<<<<< HEAD
 
 # Set up logging
 logging.basicConfig(
@@ -12,6 +13,9 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+=======
+from models import db, Project
+>>>>>>> 3f131548aae059f728b4edd5d7dc3636158ff180
 
 # Load environment variables
 load_dotenv()
@@ -169,6 +173,7 @@ async def test_azure_openai():
         return False
 
 
+<<<<<<< HEAD
 def main():
     """Run the test suite."""
     logger.info("\nStarting Azure OpenAI Integration Tests...")
@@ -184,3 +189,39 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+async def test_azure_openai_with_project_model():
+    """Test Azure OpenAI with a project-specific language model."""
+    try:
+        # Assume a project exists with ID 1
+        project_id = 1
+        project = Project.query.get(project_id)
+        project.language_model = 'gpt-4o'
+        db.session.commit()
+
+        # Test with project-specific model
+        print("\nTesting with project-specific model...")
+        project_messages = [
+            {"role": "user", "content": "What steps should I think about when writing my first Python API?"}
+        ]
+        
+        chat_response = await azure_openai.generate_chat_completion(
+            messages=project_messages,
+            purpose='chat',
+            max_completion_tokens=5000
+        )
+        
+        print("\nProject-specific Response:", chat_response["content"])
+        print("Deployment:", chat_response["deployment"])
+        print("Model:", chat_response["model"])
+        print("Purpose:", chat_response["purpose"])
+        print("Usage:", chat_response["usage"])
+        
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
+
+if __name__ == "__main__":
+    asyncio.run(test_azure_openai())
+    asyncio.run(test_azure_openai_with_project_model())
+>>>>>>> 3f131548aae059f728b4edd5d7dc3636158ff180
