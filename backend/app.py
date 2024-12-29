@@ -5,6 +5,7 @@ from datetime import timedelta
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
+import asyncio
 
 from config import config
 from models import db
@@ -12,6 +13,8 @@ from routes.auth import auth_bp
 from routes.projects import projects_bp
 from routes.conversations import conversations_bp
 from sockets.handlers import WebSocketManager
+from azure_openai_config import AzureOpenAIConfig
+
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
 os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, 'app.log')
@@ -24,6 +27,11 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+async def create_azure_openai_config():
+    """Create and initialize AzureOpenAIConfig asynchronously."""
+    global azure_openai
+    azure_openai = await AzureOpenAIConfig()
 
 def create_app(config_name='development'):
     """Create and configure the Flask application."""
@@ -139,6 +147,9 @@ def create_app(config_name='development'):
     with app.app_context():
         db.create_all()
     
+    # Initialize AzureOpenAIConfig asynchronously
+    asyncio.run(create_azure_openai_config())
+
     return app
 
 def create_socketio(app):

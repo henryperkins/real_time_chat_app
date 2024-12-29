@@ -36,19 +36,19 @@ class DeploymentConfig:
 class AzureOpenAIConfig:
     """Azure OpenAI configuration and client management."""
 
-    def __init__(self):
+    async def __init__(self):
         """Initialize Azure OpenAI configuration."""
         self.azure_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
-        self.api_key = os.getenv('AZURE_OPENAI_KEY')
+        self.api_key = os.getenv('AZURE_OPENAI_API_KEY')
         self.api_version = os.getenv(
             'AZURE_OPENAI_API_VERSION',
-            '2024-10-01-preview'
+            '2024-12-01-preview'
         )
 
         if not all([self.azure_endpoint, self.api_key]):
             raise ValueError(
                 "Missing required Azure OpenAI configuration. "
-                "Please set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY "
+                "Please set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY "
                 "environment variables."
             )
 
@@ -59,13 +59,22 @@ class AzureOpenAIConfig:
         )
 
         # Load deployment configurations
-        self.deployments = self._load_deployments()
+        self.deployments = await self._load_deployments()
         if len(self.deployments) <= 1:
             logger.warning(f"Only {len(self.deployments)} deployment(s) loaded. Expected more.")
         else:
             logger.info(f"Loaded {len(self.deployments)} deployments")
 
-    def _load_deployments(self) -> Dict[str, DeploymentConfig]:
+    async def fetch_models(self) -> List[Dict[str, Any]]:
+        """Fetch all models available for the Azure OpenAI resource."""
+        try:
+            response = await self.client.models.list()
+            return response.data
+        except Exception as e:
+            logger.error(f"Error fetching models: {str(e)}")
+            return []
+
+    async def _load_deployments(self) -> Dict[str, DeploymentConfig]:
         """Load deployment configurations from environment."""
         deployments = {}
         deployment_str = os.getenv('AZURE_OPENAI_DEPLOYMENTS')
@@ -88,14 +97,45 @@ class AzureOpenAIConfig:
             except Exception as e:
                 logger.error(f"Unexpected error loading deployments: {str(e)}")
         
-        # Add default deployment if none specified
+        # Fetch models to dynamically set the default
+        models = await self.fetch_models()
+        default_model = None
+        
         if not deployments:
-            default_deployment = os.getenv('AZURE_OPENAI_DEPLOYMENT', 'gpt-4')
-            deployments['default'] = DeploymentConfig(
-                name=default_deployment,
-                model='gpt-4',
-                purpose='default'
-            )
+            # If no deployments are specified, choose the first generally available model
+            for model in models:
+                if model['lifecycle_status'] == 'generally-available':
+                    default_model = model['id']
+                    break
+            
+            if default_model:
+                deployments['default'] = DeploymentConfig(
+                    name=default_model,
+                    model=default_model,
+                    purpose='default'
+                )
+            else:
+                logger.warning("No generally available models found. Using 'gpt-4' as default.")
+                deployments['default'] = DeploymentConfig(
+                    name='gpt-4',
+                    model='gpt-4',
+                    purpose='default'
+                )
+        else:
+            # If deployments are specified, check if they are valid
+            for purpose, config in deployments.items():
+                found = False
+                for model in models:
+                    if model['id'] == config.model:
+                        found = True
+                        break
+                if not found:
+                    logger.warning(f"Deployment model '{config.model}' not found. Using 'gpt-4' as default for purpose '{purpose}'.")
+                    deployments[purpose] = DeploymentConfig(
+                        name='gpt-4',
+                        model='gpt-4',
+                        purpose=purpose
+                    )
         
         return deployments
 
@@ -201,4 +241,4 @@ class AzureOpenAIError(Exception):
 
 
 # Create a global instance
-azure_openai = AzureOpenAIConfig()
+azure_openai = None  # This will be initialized asynchronously in app.py
